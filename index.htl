@@ -1,0 +1,964 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI with Musfirah</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+RESET
+========================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#000;
+color:white;
+overflow-x:hidden;
+position:relative;
+}
+
+/* =========================
+LIVE ANIMATED BACKGROUND
+========================= */
+
+#animated-bg{
+position:fixed;
+inset:0;
+z-index:-5;
+overflow:hidden;
+background:
+radial-gradient(circle at 20% 20%, rgba(255,0,128,0.15), transparent 25%),
+radial-gradient(circle at 80% 30%, rgba(255,102,0,0.15), transparent 25%),
+radial-gradient(circle at 50% 80%, rgba(0,170,255,0.12), transparent 25%),
+linear-gradient(135deg,#000,#111,#000);
+}
+
+#animated-bg::before,
+#animated-bg::after{
+content:"";
+position:absolute;
+width:200%;
+height:200%;
+top:-50%;
+left:-50%;
+}
+
+#animated-bg::before{
+background-image:
+radial-gradient(circle,#ff0080 2px,transparent 2px),
+radial-gradient(circle,#ff6600 2px,transparent 2px),
+radial-gradient(circle,#00ccff 2px,transparent 2px);
+
+background-size:
+120px 120px,
+180px 180px,
+220px 220px;
+
+animation:particlesMove 30s linear infinite;
+opacity:0.5;
+}
+
+#animated-bg::after{
+background-image:
+radial-gradient(circle,rgba(255,0,128,0.2) 0%,transparent 40%),
+radial-gradient(circle,rgba(255,102,0,0.18) 0%,transparent 40%),
+radial-gradient(circle,rgba(0,170,255,0.18) 0%,transparent 40%);
+
+background-size:
+500px 500px,
+700px 700px,
+900px 900px;
+
+animation:orbMove 45s linear infinite;
+}
+
+@keyframes particlesMove{
+0%{
+transform:translate(0,0) rotate(0deg);
+}
+100%{
+transform:translate(10%,10%) rotate(360deg);
+}
+}
+
+@keyframes orbMove{
+0%{
+transform:translate(-5%,-5%) rotate(0deg);
+}
+50%{
+transform:translate(5%,5%) rotate(180deg);
+}
+100%{
+transform:translate(-5%,-5%) rotate(360deg);
+}
+}
+
+/* =========================
+TOP BAR
+========================= */
+
+.top-bar{
+width:100%;
+background:linear-gradient(90deg,#ff0080,#ff6600);
+text-align:center;
+padding:12px 0;
+font-size:16px;
+font-weight:600;
+position:fixed;
+top:0;
+left:0;
+z-index:9999;
+box-shadow:0 0 15px rgba(255,0,128,0.4);
+}
+
+.top-bar a{
+color:white;
+text-decoration:none;
+}
+
+/* =========================
+NAVBAR
+========================= */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 50px;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(10px);
+position:sticky;
+top:45px;
+z-index:999;
+}
+
+.logo{
+font-size:32px;
+font-weight:700;
+background:linear-gradient(90deg,#ff0080,#ff6600);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:20px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-size:18px;
+padding:10px 16px;
+border-radius:10px;
+transition:0.3s;
+}
+
+nav ul li a:hover{
+background:linear-gradient(90deg,#ff0080,#ff6600);
+box-shadow:0 0 20px rgba(255,0,128,0.4);
+}
+
+/* =========================
+HERO SECTION
+========================= */
+
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:140px 20px 80px;
+}
+
+.hero h1{
+font-size:72px;
+max-width:1000px;
+line-height:1.2;
+margin-bottom:25px;
+background:linear-gradient(90deg,#ff0080,#ff6600);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.subtext{
+font-size:30px;
+color:#ffb3d9;
+margin-bottom:20px;
+font-weight:600;
+}
+
+.hero p{
+font-size:22px;
+max-width:760px;
+line-height:1.8;
+color:#f2f2f2;
+}
+
+/* =========================
+BUTTONS
+========================= */
+
+.buttons{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:40px;
+}
+
+.btn{
+padding:16px 35px;
+background:linear-gradient(90deg,#ff0080,#ff6600);
+color:white;
+text-decoration:none;
+border-radius:14px;
+font-size:18px;
+font-weight:600;
+transition:0.35s ease;
+display:inline-block;
+box-shadow:0 0 20px rgba(255,0,128,0.3);
+border:none;
+cursor:pointer;
+}
+
+.btn:hover{
+transform:translateY(-6px) scale(1.05);
+box-shadow:0 0 35px rgba(255,0,128,0.6);
+}
+
+.workshop-btn{
+background:linear-gradient(90deg,#00c853,#00e676);
+box-shadow:0 0 20px rgba(0,255,120,0.35);
+}
+
+.workshop-btn:hover{
+box-shadow:0 0 35px rgba(0,255,120,0.6);
+}
+
+/* =========================
+TRUST SECTION
+========================= */
+
+.trust-section{
+margin-top:60px;
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+}
+
+.trust-badge{
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.1);
+padding:25px;
+border-radius:20px;
+width:280px;
+backdrop-filter:blur(10px);
+transition:0.3s;
+box-shadow:0 0 20px rgba(255,102,0,0.15);
+}
+
+.trust-badge:hover{
+transform:translateY(-10px);
+box-shadow:0 0 35px rgba(255,0,128,0.4);
+}
+
+.trust-badge span{
+display:block;
+margin-top:10px;
+color:#ddd;
+font-size:15px;
+line-height:1.6;
+}
+
+/* =========================
+SECTIONS
+========================= */
+
+section{
+padding:100px 20px;
+}
+
+section h2{
+font-size:52px;
+margin-bottom:60px;
+text-align:center;
+background:linear-gradient(90deg,#ff0080,#ff6600);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* =========================
+CARDS
+========================= */
+
+.premium-cards,
+.learn-container,
+.testimonial-container{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+}
+
+.premium-card,
+.learn-box,
+.testimonial-card{
+width:330px;
+background:rgba(255,255,255,0.08);
+border-radius:20px;
+overflow:hidden;
+backdrop-filter:blur(10px);
+transition:0.4s;
+box-shadow:0 0 20px rgba(255,102,0,0.15);
+}
+
+.premium-card:hover,
+.learn-box:hover,
+.testimonial-card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 35px rgba(255,0,128,0.4);
+}
+
+.premium-card img,
+.learn-box img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.course-content,
+.learn-content{
+padding:25px;
+text-align:center;
+}
+
+.course-content h3{
+font-size:28px;
+margin-bottom:15px;
+color:#ffb3d9;
+}
+
+.learn-content{
+font-size:22px;
+font-weight:600;
+}
+
+.enroll-btn{
+display:inline-block;
+margin-top:20px;
+padding:14px 28px;
+background:linear-gradient(90deg,#ff0080,#ff6600);
+color:white;
+text-decoration:none;
+border-radius:12px;
+}
+
+/* =========================
+TESTIMONIALS
+========================= */
+
+.testimonial-card{
+padding:25px;
+text-align:center;
+}
+
+.student-img{
+width:90px;
+height:90px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:15px;
+border:3px solid #ff6600;
+}
+
+.review{
+line-height:1.7;
+}
+
+/* =========================
+CONTACT
+========================= */
+
+.contact{
+text-align:center;
+}
+
+.contact p{
+font-size:22px;
+margin-bottom:35px;
+}
+
+.contact-buttons{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.community-btn{
+background:linear-gradient(90deg,#25D366,#128C7E);
+}
+
+.insta-btn{
+background:linear-gradient(90deg,#833ab4,#fd1d1d,#fcb045);
+}
+
+/* =========================
+WHATSAPP FLOAT
+========================= */
+
+.whatsapp-float{
+position:fixed;
+bottom:20px;
+right:20px;
+width:65px;
+height:65px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:30px;
+text-decoration:none;
+z-index:9999;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+/* =========================
+MODAL
+========================= */
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.88);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:99999;
+padding:20px;
+}
+
+.modal-content{
+width:100%;
+max-width:450px;
+background:#111;
+padding:35px;
+border-radius:20px;
+box-shadow:0 0 30px rgba(255,0,128,0.4);
+position:relative;
+animation:popup 0.4s ease;
+}
+
+@keyframes popup{
+from{
+opacity:0;
+transform:scale(0.8);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+.modal-content h2{
+text-align:center;
+margin-bottom:25px;
+background:linear-gradient(90deg,#ff0080,#ff6600);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.close-btn{
+position:absolute;
+top:15px;
+right:20px;
+font-size:30px;
+cursor:pointer;
+}
+
+.input-box{
+margin-bottom:20px;
+}
+
+.input-box input{
+width:100%;
+padding:15px;
+border:none;
+outline:none;
+border-radius:12px;
+background:#1f1f1f;
+color:white;
+font-size:16px;
+}
+
+.submit-btn{
+width:100%;
+padding:15px;
+border:none;
+border-radius:12px;
+background:linear-gradient(90deg,#ff0080,#ff6600);
+color:white;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+}
+
+.payment-box{
+background:#1a1a1a;
+padding:20px;
+border-radius:15px;
+line-height:2;
+margin-bottom:25px;
+}
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+background:#111;
+text-align:center;
+padding:25px;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+nav{
+flex-direction:column;
+gap:15px;
+padding:20px;
+}
+
+nav ul{
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.hero h1{
+font-size:45px;
+}
+
+.subtext{
+font-size:22px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+.premium-card,
+.learn-box,
+.testimonial-card{
+width:100%;
+max-width:340px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="animated-bg"></div>
+
+<!-- TOP BAR -->
+
+<div class="top-bar">
+<a href="https://chat.whatsapp.com/" target="_blank">
+🚀 Join Our WhatsApp Community
+</a>
+</div>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">
+AI with Musfirah
+</div>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#courses">Courses</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<h1>
+Learn YouTube Automation & Start Earning Online
+</h1>
+
+<div class="subtext">
+Create Faceless Videos & Grow Your Online Income
+</div>
+
+<p>
+Learn AI tools, YouTube automation, script writing,
+SEO, monetization, thumbnail creation, and video editing step by step.
+</p>
+
+<div class="buttons">
+
+<a href="#" class="btn">
+📥 Download Free Guide
+</a>
+
+<button class="btn workshop-btn" onclick="openModal()">
+🎓 Free Workshop – Rs.300
+</button>
+
+</div>
+
+<div class="trust-section">
+
+<div class="trust-badge">
+🚀 Beginner Friendly
+<span>Easy step-by-step training for complete beginners.</span>
+</div>
+
+<div class="trust-badge">
+🤖 AI Tools Included
+<span>Learn ChatGPT, AI video tools, thumbnails & automation.</span>
+</div>
+
+<div class="trust-badge">
+🔓 Lifetime Access
+<span>Watch lessons anytime without expiry.</span>
+</div>
+
+<div class="trust-badge">
+📚 Step-by-Step Training
+<span>Complete roadmap from setup to monetization.</span>
+</div>
+
+</div>
+
+</section>
+
+<!-- PREMIUM COURSES -->
+
+<section id="courses">
+
+<h2>Premium Courses</h2>
+
+<div class="premium-cards">
+
+<div class="premium-card">
+
+<img src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?q=80&w=1200&auto=format&fit=crop">
+
+<div class="course-content">
+
+<h3>YouTube Automation</h3>
+
+<p>🔥 Premium Training</p>
+<p>⏰ Duration: 2 Weeks</p>
+<p>📚 10 Lessons</p>
+<p>🎥 4 Live Sessions</p>
+
+<a href="#contact" class="enroll-btn">
+Enroll Now
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- LEARN -->
+
+<section>
+
+<h2>What You'll Learn</h2>
+
+<div class="learn-container">
+
+<div class="learn-box">
+<img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1200&auto=format&fit=crop">
+<div class="learn-content">
+🎬 AI Video Making
+</div>
+</div>
+
+<div class="learn-box">
+<img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1200&auto=format&fit=crop">
+<div class="learn-content">
+✍️ Script Writing
+</div>
+</div>
+
+<div class="learn-box">
+<img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&w=1200&auto=format&fit=crop">
+<div class="learn-content">
+🔥 Viral Topics Finding
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section class="testimonials" id="reviews">
+
+<h2>Student Success Stories</h2>
+
+<div class="testimonial-container">
+
+<div class="testimonial-card">
+<img class="student-img" src="https://randomuser.me/api/portraits/men/32.jpg">
+<h3>Ahmed Khan</h3>
+<p class="review">
+I started my faceless YouTube channel after joining this course and now my videos are getting thousands of views.
+</p>
+</div>
+
+<div class="testimonial-card">
+<img class="student-img" src="https://randomuser.me/api/portraits/women/44.jpg">
+<h3>Sarah Ali</h3>
+<p class="review">
+The AI video editing lessons were super easy and helped me create professional content fast.
+</p>
+</div>
+
+<div class="testimonial-card">
+<img class="student-img" src="https://randomuser.me/api/portraits/men/75.jpg">
+<h3>Usman Malik</h3>
+<p class="review">
+I learned SEO and monetization strategies that helped my channel grow much faster.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+<h2>Join My Community</h2>
+
+<p>
+Want to learn AI and grow online? Join the WhatsApp community now.
+</p>
+
+<div class="contact-buttons">
+
+<a href="https://chat.whatsapp.com/" class="btn community-btn">
+🚀 Join WhatsApp Community
+</a>
+
+<a href="https://instagram.com/" class="btn insta-btn">
+📸 Instagram
+</a>
+
+</div>
+
+</section>
+
+<!-- FLOAT BUTTON -->
+
+<a href="https://chat.whatsapp.com/" class="whatsapp-float">
+📲
+</a>
+
+<!-- REGISTRATION MODAL -->
+
+<div class="modal" id="workshopModal">
+
+<div class="modal-content">
+
+<div class="close-btn" onclick="closeModal()">
+×
+</div>
+
+<h2>
+Workshop Registration
+</h2>
+
+<form id="workshopForm">
+
+<div class="input-box">
+<input type="text" name="name" placeholder="Enter Your Name" required>
+</div>
+
+<div class="input-box">
+<input type="email" name="email" placeholder="Enter Your Gmail" required>
+</div>
+
+<div class="input-box">
+<input type="tel" name="phone" placeholder="Enter WhatsApp Number" required>
+</div>
+
+<button type="submit" class="submit-btn">
+Submit Information
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<!-- PAYMENT MODAL -->
+
+<div class="modal" id="paymentModal">
+
+<div class="modal-content">
+
+<div class="close-btn" onclick="closePaymentModal()">
+×
+</div>
+
+<h2>
+Complete Your Payment
+</h2>
+
+<p style="text-align:center;margin-bottom:20px;">
+Workshop Fee: <b>Rs.300</b>
+</p>
+
+<div class="payment-box">
+
+<p><b>Bank Name:</b> MCB Bank Limited</p>
+
+<p><b>Account Title:</b> Irtaza Tahir</p>
+
+<p><b>Account Number:</b> 1643789581007865</p>
+
+<p><b>IBAN:</b> PK04MUCB1643789581007865</p>
+
+</div>
+
+<p style="text-align:center;margin-bottom:25px;color:#ccc;line-height:1.7;">
+After payment send your payment screenshot on WhatsApp.
+</p>
+
+<div style="text-align:center;">
+
+<a
+href="https://wa.me/923014411354?text=Assalamualaikum%20I%20have%20completed%20the%20payment%20for%20the%20AI%20Workshop.%20Here%20is%20my%20payment%20screenshot."
+target="_blank"
+class="btn workshop-btn"
+>
+
+✅ Send Payment Screenshot
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+© 2026 AI with Musfirah | All Rights Reserved
+</footer>
+
+<!-- SCRIPT -->
+
+<script>
+
+function openModal(){
+document.getElementById("workshopModal").style.display="flex";
+}
+
+function closeModal(){
+document.getElementById("workshopModal").style.display="none";
+}
+
+function closePaymentModal(){
+document.getElementById("paymentModal").style.display="none";
+}
+
+/* FORM SUBMIT */
+
+document.getElementById("workshopForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+fetch("https://formsubmit.co/ajax/mianirtazatahir@gmail.com",{
+method:"POST",
+headers:{
+'Content-Type':'application/json',
+'Accept':'application/json'
+},
+body:JSON.stringify({
+name:this.name.value,
+email:this.email.value,
+phone:this.phone.value
+})
+})
+.then(response => response.json())
+.then(data => {
+
+closeModal();
+
+document.getElementById("paymentModal").style.display="flex";
+
+});
+
+});
+
+window.onclick=function(e){
+
+const workshopModal=document.getElementById("workshopModal");
+const paymentModal=document.getElementById("paymentModal");
+
+if(e.target==workshopModal){
+workshopModal.style.display="none";
+}
+
+if(e.target==paymentModal){
+paymentModal.style.display="none";
+}
+
+}
+
+</script>
+
+</body>
+</html>
+```
