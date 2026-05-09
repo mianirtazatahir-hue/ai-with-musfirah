@@ -1,964 +1,1308 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>AI with Musfirah</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
-
-/* =========================
-RESET
-========================= */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
-body{
-font-family:'Poppins',sans-serif;
-background:#000;
-color:white;
-overflow-x:hidden;
-position:relative;
-}
-
-/* =========================
-LIVE ANIMATED BACKGROUND
-========================= */
-
-#animated-bg{
-position:fixed;
-inset:0;
-z-index:-5;
-overflow:hidden;
-background:
-radial-gradient(circle at 20% 20%, rgba(255,0,128,0.15), transparent 25%),
-radial-gradient(circle at 80% 30%, rgba(255,102,0,0.15), transparent 25%),
-radial-gradient(circle at 50% 80%, rgba(0,170,255,0.12), transparent 25%),
-linear-gradient(135deg,#000,#111,#000);
-}
-
-#animated-bg::before,
-#animated-bg::after{
-content:"";
-position:absolute;
-width:200%;
-height:200%;
-top:-50%;
-left:-50%;
-}
-
-#animated-bg::before{
-background-image:
-radial-gradient(circle,#ff0080 2px,transparent 2px),
-radial-gradient(circle,#ff6600 2px,transparent 2px),
-radial-gradient(circle,#00ccff 2px,transparent 2px);
-
-background-size:
-120px 120px,
-180px 180px,
-220px 220px;
-
-animation:particlesMove 30s linear infinite;
-opacity:0.5;
-}
-
-#animated-bg::after{
-background-image:
-radial-gradient(circle,rgba(255,0,128,0.2) 0%,transparent 40%),
-radial-gradient(circle,rgba(255,102,0,0.18) 0%,transparent 40%),
-radial-gradient(circle,rgba(0,170,255,0.18) 0%,transparent 40%);
-
-background-size:
-500px 500px,
-700px 700px,
-900px 900px;
-
-animation:orbMove 45s linear infinite;
-}
-
-@keyframes particlesMove{
-0%{
-transform:translate(0,0) rotate(0deg);
-}
-100%{
-transform:translate(10%,10%) rotate(360deg);
-}
-}
-
-@keyframes orbMove{
-0%{
-transform:translate(-5%,-5%) rotate(0deg);
-}
-50%{
-transform:translate(5%,5%) rotate(180deg);
-}
-100%{
-transform:translate(-5%,-5%) rotate(360deg);
-}
-}
-
-/* =========================
-TOP BAR
-========================= */
-
-.top-bar{
-width:100%;
-background:linear-gradient(90deg,#ff0080,#ff6600);
-text-align:center;
-padding:12px 0;
-font-size:16px;
-font-weight:600;
-position:fixed;
-top:0;
-left:0;
-z-index:9999;
-box-shadow:0 0 15px rgba(255,0,128,0.4);
-}
-
-.top-bar a{
-color:white;
-text-decoration:none;
-}
-
-/* =========================
-NAVBAR
-========================= */
-
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 50px;
-background:rgba(0,0,0,0.7);
-backdrop-filter:blur(10px);
-position:sticky;
-top:45px;
-z-index:999;
-}
-
-.logo{
-font-size:32px;
-font-weight:700;
-background:linear-gradient(90deg,#ff0080,#ff6600);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-nav ul{
-display:flex;
-list-style:none;
-gap:20px;
-}
-
-nav ul li a{
-color:white;
-text-decoration:none;
-font-size:18px;
-padding:10px 16px;
-border-radius:10px;
-transition:0.3s;
-}
-
-nav ul li a:hover{
-background:linear-gradient(90deg,#ff0080,#ff6600);
-box-shadow:0 0 20px rgba(255,0,128,0.4);
-}
-
-/* =========================
-HERO SECTION
-========================= */
-
-.hero{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:140px 20px 80px;
-}
-
-.hero h1{
-font-size:72px;
-max-width:1000px;
-line-height:1.2;
-margin-bottom:25px;
-background:linear-gradient(90deg,#ff0080,#ff6600);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.subtext{
-font-size:30px;
-color:#ffb3d9;
-margin-bottom:20px;
-font-weight:600;
-}
-
-.hero p{
-font-size:22px;
-max-width:760px;
-line-height:1.8;
-color:#f2f2f2;
-}
-
-/* =========================
-BUTTONS
-========================= */
-
-.buttons{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-margin-top:40px;
-}
-
-.btn{
-padding:16px 35px;
-background:linear-gradient(90deg,#ff0080,#ff6600);
-color:white;
-text-decoration:none;
-border-radius:14px;
-font-size:18px;
-font-weight:600;
-transition:0.35s ease;
-display:inline-block;
-box-shadow:0 0 20px rgba(255,0,128,0.3);
-border:none;
-cursor:pointer;
-}
-
-.btn:hover{
-transform:translateY(-6px) scale(1.05);
-box-shadow:0 0 35px rgba(255,0,128,0.6);
-}
-
-.workshop-btn{
-background:linear-gradient(90deg,#00c853,#00e676);
-box-shadow:0 0 20px rgba(0,255,120,0.35);
-}
-
-.workshop-btn:hover{
-box-shadow:0 0 35px rgba(0,255,120,0.6);
-}
-
-/* =========================
-TRUST SECTION
-========================= */
-
-.trust-section{
-margin-top:60px;
-display:flex;
-justify-content:center;
-gap:25px;
-flex-wrap:wrap;
-}
-
-.trust-badge{
-background:rgba(255,255,255,0.08);
-border:1px solid rgba(255,255,255,0.1);
-padding:25px;
-border-radius:20px;
-width:280px;
-backdrop-filter:blur(10px);
-transition:0.3s;
-box-shadow:0 0 20px rgba(255,102,0,0.15);
-}
-
-.trust-badge:hover{
-transform:translateY(-10px);
-box-shadow:0 0 35px rgba(255,0,128,0.4);
-}
-
-.trust-badge span{
-display:block;
-margin-top:10px;
-color:#ddd;
-font-size:15px;
-line-height:1.6;
-}
-
-/* =========================
-SECTIONS
-========================= */
-
-section{
-padding:100px 20px;
-}
-
-section h2{
-font-size:52px;
-margin-bottom:60px;
-text-align:center;
-background:linear-gradient(90deg,#ff0080,#ff6600);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-/* =========================
-CARDS
-========================= */
-
-.premium-cards,
-.learn-container,
-.testimonial-container{
-display:flex;
-justify-content:center;
-gap:30px;
-flex-wrap:wrap;
-}
-
-.premium-card,
-.learn-box,
-.testimonial-card{
-width:330px;
-background:rgba(255,255,255,0.08);
-border-radius:20px;
-overflow:hidden;
-backdrop-filter:blur(10px);
-transition:0.4s;
-box-shadow:0 0 20px rgba(255,102,0,0.15);
-}
-
-.premium-card:hover,
-.learn-box:hover,
-.testimonial-card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 35px rgba(255,0,128,0.4);
-}
-
-.premium-card img,
-.learn-box img{
-width:100%;
-height:220px;
-object-fit:cover;
-}
-
-.course-content,
-.learn-content{
-padding:25px;
-text-align:center;
-}
-
-.course-content h3{
-font-size:28px;
-margin-bottom:15px;
-color:#ffb3d9;
-}
-
-.learn-content{
-font-size:22px;
-font-weight:600;
-}
-
-.enroll-btn{
-display:inline-block;
-margin-top:20px;
-padding:14px 28px;
-background:linear-gradient(90deg,#ff0080,#ff6600);
-color:white;
-text-decoration:none;
-border-radius:12px;
-}
-
-/* =========================
-TESTIMONIALS
-========================= */
-
-.testimonial-card{
-padding:25px;
-text-align:center;
-}
-
-.student-img{
-width:90px;
-height:90px;
-border-radius:50%;
-object-fit:cover;
-margin-bottom:15px;
-border:3px solid #ff6600;
-}
-
-.review{
-line-height:1.7;
-}
-
-/* =========================
-CONTACT
-========================= */
-
-.contact{
-text-align:center;
-}
-
-.contact p{
-font-size:22px;
-margin-bottom:35px;
-}
-
-.contact-buttons{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-}
-
-.community-btn{
-background:linear-gradient(90deg,#25D366,#128C7E);
-}
-
-.insta-btn{
-background:linear-gradient(90deg,#833ab4,#fd1d1d,#fcb045);
-}
-
-/* =========================
-WHATSAPP FLOAT
-========================= */
-
-.whatsapp-float{
-position:fixed;
-bottom:20px;
-right:20px;
-width:65px;
-height:65px;
-background:#25D366;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:30px;
-text-decoration:none;
-z-index:9999;
-box-shadow:0 0 20px rgba(0,0,0,0.4);
-}
-
-/* =========================
-MODAL
-========================= */
-
-.modal{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.88);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:99999;
-padding:20px;
-}
-
-.modal-content{
-width:100%;
-max-width:450px;
-background:#111;
-padding:35px;
-border-radius:20px;
-box-shadow:0 0 30px rgba(255,0,128,0.4);
-position:relative;
-animation:popup 0.4s ease;
-}
-
-@keyframes popup{
-from{
-opacity:0;
-transform:scale(0.8);
-}
-to{
-opacity:1;
-transform:scale(1);
-}
-}
-
-.modal-content h2{
-text-align:center;
-margin-bottom:25px;
-background:linear-gradient(90deg,#ff0080,#ff6600);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.close-btn{
-position:absolute;
-top:15px;
-right:20px;
-font-size:30px;
-cursor:pointer;
-}
-
-.input-box{
-margin-bottom:20px;
-}
-
-.input-box input{
-width:100%;
-padding:15px;
-border:none;
-outline:none;
-border-radius:12px;
-background:#1f1f1f;
-color:white;
-font-size:16px;
-}
-
-.submit-btn{
-width:100%;
-padding:15px;
-border:none;
-border-radius:12px;
-background:linear-gradient(90deg,#ff0080,#ff6600);
-color:white;
-font-size:18px;
-font-weight:600;
-cursor:pointer;
-}
-
-.payment-box{
-background:#1a1a1a;
-padding:20px;
-border-radius:15px;
-line-height:2;
-margin-bottom:25px;
-}
-
-/* =========================
-FOOTER
-========================= */
-
-footer{
-background:#111;
-text-align:center;
-padding:25px;
-}
-
-/* =========================
-RESPONSIVE
-========================= */
-
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;background:#000;color:white;overflow-x:hidden;position:relative;}
+
+#animated-bg{position:fixed;inset:0;z-index:-5;overflow:hidden;background:radial-gradient(circle at 20% 20%,rgba(255,0,128,0.15),transparent 25%),radial-gradient(circle at 80% 30%,rgba(255,102,0,0.15),transparent 25%),radial-gradient(circle at 50% 80%,rgba(0,170,255,0.12),transparent 25%),linear-gradient(135deg,#000,#111,#000);}
+#animated-bg::before,#animated-bg::after{content:"";position:absolute;width:200%;height:200%;top:-50%;left:-50%;}
+#animated-bg::before{background-image:radial-gradient(circle,#ff0080 2px,transparent 2px),radial-gradient(circle,#ff6600 2px,transparent 2px),radial-gradient(circle,#00ccff 2px,transparent 2px);background-size:120px 120px,180px 180px,220px 220px;animation:particlesMove 30s linear infinite;opacity:0.5;}
+#animated-bg::after{background-image:radial-gradient(circle,rgba(255,0,128,0.2) 0%,transparent 40%),radial-gradient(circle,rgba(255,102,0,0.18) 0%,transparent 40%),radial-gradient(circle,rgba(0,170,255,0.18) 0%,transparent 40%);background-size:500px 500px,700px 700px,900px 900px;animation:orbMove 45s linear infinite;}
+@keyframes particlesMove{0%{transform:translate(0,0) rotate(0deg);}100%{transform:translate(10%,10%) rotate(360deg);}}
+@keyframes orbMove{0%{transform:translate(-5%,-5%) rotate(0deg);}50%{transform:translate(5%,5%) rotate(180deg);}100%{transform:translate(-5%,-5%) rotate(360deg);}}
+
+/* TOP BAR */
+.top-bar{width:100%;background:linear-gradient(90deg,#ff0080,#ff6600);text-align:center;padding:8px 0 0 0;font-size:16px;font-weight:600;position:fixed;top:0;left:0;z-index:9999;box-shadow:0 0 15px rgba(255,0,128,0.4);}
+.top-bar a{color:white;text-decoration:none;}
+.top-bar-line1{padding:10px 0 6px;}
+.top-bar-line2{padding:6px 0 10px;font-size:15px;display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;}
+.price-old{text-decoration:line-through;opacity:0.8;font-size:14px;}
+.price-arrow{font-size:18px;}
+.price-new{font-size:18px;font-weight:800;}
+.seats-badge{background:rgba(0,0,0,0.25);border-radius:20px;padding:3px 12px;font-size:13px;font-weight:600;}
+.topbar-register-btn{background:rgba(0,0,0,0.3);border:2px solid white;color:white;padding:6px 20px;border-radius:20px;font-size:14px;font-weight:700;cursor:pointer;transition:0.3s;text-decoration:none;display:inline-block;}
+.topbar-register-btn:hover{background:white;color:#ff0080;}
+
+/* NAVBAR */
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 50px;background:rgba(0,0,0,0.7);backdrop-filter:blur(10px);position:sticky;top:80px;z-index:999;}
+.logo{font-size:32px;font-weight:700;background:linear-gradient(90deg,#ff0080,#ff6600);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+nav ul{display:flex;list-style:none;gap:20px;}
+nav ul li a{color:white;text-decoration:none;font-size:18px;padding:10px 16px;border-radius:10px;transition:0.3s;}
+nav ul li a:hover{background:linear-gradient(90deg,#ff0080,#ff6600);box-shadow:0 0 20px rgba(255,0,128,0.4);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:160px 20px 80px;}
+.hero h1{font-size:72px;max-width:1000px;line-height:1.2;margin-bottom:25px;background:linear-gradient(90deg,#ff0080,#ff6600);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.subtext{font-size:30px;color:#ffb3d9;margin-bottom:20px;font-weight:600;}
+.hero p{font-size:22px;max-width:760px;line-height:1.8;color:#f2f2f2;}
+
+/* BUTTONS */
+.buttons{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:40px;}
+.btn{padding:16px 35px;background:linear-gradient(90deg,#ff0080,#ff6600);color:white;text-decoration:none;border-radius:14px;font-size:18px;font-weight:600;transition:0.35s ease;display:inline-block;box-shadow:0 0 20px rgba(255,0,128,0.3);border:none;cursor:pointer;}
+.btn:hover{transform:translateY(-6px) scale(1.05);box-shadow:0 0 35px rgba(255,0,128,0.6);}
+.workshop-btn{background:linear-gradient(90deg,#00c853,#00e676);box-shadow:0 0 20px rgba(0,255,120,0.35);}
+.workshop-btn:hover{box-shadow:0 0 35px rgba(0,255,120,0.6);}
+.niches-btn{background:linear-gradient(90deg,#667eea,#764ba2);box-shadow:0 0 20px rgba(102,126,234,0.35);}
+.niches-btn:hover{box-shadow:0 0 35px rgba(102,126,234,0.6);}
+
+/* TRUST BADGES */
+.trust-section{margin-top:60px;display:flex;justify-content:center;gap:25px;flex-wrap:wrap;}
+.trust-badge{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);padding:25px;border-radius:20px;width:280px;backdrop-filter:blur(10px);transition:0.3s;box-shadow:0 0 20px rgba(255,102,0,0.15);}
+.trust-badge:hover{transform:translateY(-10px);box-shadow:0 0 35px rgba(255,0,128,0.4);}
+.trust-badge span{display:block;margin-top:10px;color:#ddd;font-size:15px;line-height:1.6;}
+
+/* SECTIONS */
+section{padding:100px 20px;}
+section h2{font-size:52px;margin-bottom:60px;text-align:center;background:linear-gradient(90deg,#ff0080,#ff6600);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+
+/* CARDS */
+.premium-cards,.learn-container,.testimonial-container{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;}
+.premium-card,.learn-box,.testimonial-card{width:330px;background:rgba(255,255,255,0.08);border-radius:20px;overflow:hidden;backdrop-filter:blur(10px);transition:0.4s;box-shadow:0 0 20px rgba(255,102,0,0.15);}
+.premium-card:hover,.learn-box:hover,.testimonial-card:hover{transform:translateY(-10px);box-shadow:0 0 35px rgba(255,0,128,0.4);}
+.premium-card img,.learn-box img{width:100%;height:220px;object-fit:cover;}
+.course-content,.learn-content{padding:25px;text-align:center;}
+.course-content h3{font-size:28px;margin-bottom:15px;color:#ffb3d9;}
+.learn-content{font-size:22px;font-weight:600;}
+.course-lessons{text-align:left;margin:20px 0;background:rgba(255,255,255,0.05);padding:15px;border-radius:10px;font-size:14px;line-height:2;}
+.course-lessons li{margin-left:20px;color:#ddd;}
+.course-lessons strong{color:#ff0080;}
+.learn-btn{display:inline-block;margin-top:20px;padding:14px 28px;background:linear-gradient(90deg,#00c853,#00e676);color:white;text-decoration:none;border-radius:12px;cursor:pointer;border:none;font-size:16px;font-weight:600;}
+.learn-btn:hover{transform:translateY(-3px);box-shadow:0 0 20px rgba(0,255,120,0.5);}
+.enroll-btn{display:inline-block;margin-top:20px;padding:14px 28px;background:linear-gradient(90deg,#ff0080,#ff6600);color:white;text-decoration:none;border-radius:12px;cursor:pointer;border:none;font-size:16px;font-weight:600;}
+.enroll-btn:hover{transform:translateY(-3px);box-shadow:0 0 20px rgba(255,0,128,0.5);}
+
+/* TESTIMONIALS */
+.testimonial-card{padding:25px;text-align:center;}
+.student-img{width:90px;height:90px;border-radius:50%;object-fit:cover;margin-bottom:15px;border:3px solid #ff6600;}
+.review{line-height:1.7;}
+
+/* CONTACT */
+.contact{text-align:center;}
+.contact p{font-size:22px;margin-bottom:35px;}
+.contact-buttons{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
+.community-btn{background:linear-gradient(90deg,#25D366,#128C7E);}
+.insta-btn{background:linear-gradient(90deg,#833ab4,#fd1d1d,#fcb045);}
+
+/* WHATSAPP FLOAT */
+.whatsapp-float{position:fixed;bottom:20px;right:20px;width:65px;height:65px;background:#25D366;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:30px;text-decoration:none;z-index:9999;box-shadow:0 0 20px rgba(0,0,0,0.4);}
+
+/* MODALS */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.88);display:none;justify-content:center;align-items:center;z-index:99999;padding:20px;overflow-y:auto;}
+.modal-content{width:100%;max-width:450px;background:#111;padding:35px;border-radius:20px;box-shadow:0 0 30px rgba(255,0,128,0.4);position:relative;animation:popup 0.4s ease;}
+.pdf-modal-content{width:95%;max-width:900px;max-height:90vh;background:#111;padding:25px;border-radius:20px;box-shadow:0 0 30px rgba(255,0,128,0.4);position:relative;animation:popup 0.4s ease;display:flex;flex-direction:column;overflow-y:auto;}
+.detail-modal-content{width:95%;max-width:700px;background:#111;padding:35px;border-radius:20px;box-shadow:0 0 30px rgba(255,0,128,0.4);position:relative;animation:popup 0.4s ease;max-height:85vh;overflow-y:auto;}
+.niches-modal-content{width:95%;max-width:800px;background:#111;padding:35px;border-radius:20px;box-shadow:0 0 30px rgba(102,126,234,0.4);position:relative;animation:popup 0.4s ease;max-height:85vh;overflow-y:auto;}
+.learn-modal-content{width:95%;max-width:750px;background:#111;padding:35px;border-radius:20px;box-shadow:0 0 30px rgba(0,200,100,0.4);position:relative;animation:popup 0.4s ease;max-height:85vh;overflow-y:auto;}
+@keyframes popup{from{opacity:0;transform:scale(0.8);}to{opacity:1;transform:scale(1);}}
+.modal-content h2,.pdf-modal-content h2,.detail-modal-content h2,.niches-modal-content h2,.learn-modal-content h2{text-align:center;margin-bottom:25px;background:linear-gradient(90deg,#ff0080,#ff6600);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.niches-modal-content h2{background:linear-gradient(90deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.learn-modal-content h2{background:linear-gradient(90deg,#00c853,#00e676);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.close-btn{position:absolute;top:15px;right:20px;font-size:30px;cursor:pointer;color:white;}
+.input-box{margin-bottom:20px;}
+.input-box input{width:100%;padding:15px;border:none;outline:none;border-radius:12px;background:#1f1f1f;color:white;font-size:16px;}
+.submit-btn{width:100%;padding:15px;border:none;border-radius:12px;background:linear-gradient(90deg,#ff0080,#ff6600);color:white;font-size:18px;font-weight:600;cursor:pointer;}
+.payment-box{background:#1a1a1a;padding:20px;border-radius:15px;line-height:2;margin-bottom:25px;}
+.pdf-frame{width:100%;flex:1;min-height:60vh;border:none;border-radius:10px;background:white;}
+.pdf-actions{display:flex;justify-content:center;gap:15px;margin-top:20px;flex-wrap:wrap;}
+
+/* PDF BUTTONS GRID */
+.pdf-buttons-grid{display:grid;grid-template-columns:1fr;gap:15px;margin-bottom:20px;}
+.pdf-detail-btn{padding:15px;background:linear-gradient(90deg,#ff0080,#ff6600);color:white;border:none;border-radius:12px;font-size:16px;font-weight:600;cursor:pointer;transition:0.3s;}
+.pdf-detail-btn:hover{transform:translateY(-3px);box-shadow:0 0 20px rgba(255,0,128,0.5);}
+
+/* NICHES TABLE */
+.niches-table{width:100%;margin-top:20px;}
+.niches-table thead{background:linear-gradient(90deg,#667eea,#764ba2);border-radius:10px;}
+.niches-table th{padding:15px;text-align:left;font-weight:600;color:white;}
+.niches-table td{padding:15px;border-bottom:1px solid rgba(255,255,255,0.1);}
+.niches-table tbody tr:hover{background:rgba(102,126,234,0.1);}
+.niche-name{color:#667eea;font-weight:600;}
+.rpm-high{color:#00ff00;}
+.rpm-medium{color:#ffff00;}
+.rpm-low{color:#ff9500;}
+
+/* DETAIL CONTENT */
+.detail-content{color:#ddd;line-height:2;font-size:15px;}
+.detail-content h3{color:#ff0080;margin-top:20px;margin-bottom:10px;font-size:20px;}
+.detail-content ul{margin-left:20px;margin-top:10px;}
+.detail-content li{margin-bottom:10px;}
+
+.learn-content-box{color:#ddd;line-height:2;font-size:15px;}
+.learn-content-box h3{color:#00c853;margin-top:20px;margin-bottom:10px;font-size:20px;}
+.learn-content-box ul{margin-left:20px;margin-top:10px;}
+.learn-content-box li{margin-bottom:10px;}
+
+/* FOOTER */
+footer{background:#111;text-align:center;padding:25px;}
+
+/* RESPONSIVE */
 @media(max-width:768px){
-
-nav{
-flex-direction:column;
-gap:15px;
-padding:20px;
+nav{flex-direction:column;gap:15px;padding:20px;top:90px;}
+nav ul{flex-wrap:wrap;justify-content:center;}
+.hero h1{font-size:45px;}
+.subtext{font-size:22px;}
+.hero p{font-size:18px;}
+.premium-card,.learn-box,.testimonial-card{width:100%;max-width:340px;}
+.top-bar-line2{font-size:13px;gap:8px;}
+.pdf-modal-content{padding:15px;}
+.pdf-frame{min-height:50vh;}
+.hero{padding:180px 20px 80px;}
+.pdf-buttons-grid{grid-template-columns:1fr;}
+.buttons{flex-direction:column;align-items:center;}
+.btn{width:100%;max-width:300px;}
 }
-
-nav ul{
-flex-wrap:wrap;
-justify-content:center;
-}
-
-.hero h1{
-font-size:45px;
-}
-
-.subtext{
-font-size:22px;
-}
-
-.hero p{
-font-size:18px;
-}
-
-.premium-card,
-.learn-box,
-.testimonial-card{
-width:100%;
-max-width:340px;
-}
-
-}
-
 </style>
 </head>
-
 <body>
-
 <div id="animated-bg"></div>
 
 <!-- TOP BAR -->
-
 <div class="top-bar">
-<a href="https://chat.whatsapp.com/" target="_blank">
-🚀 Join Our WhatsApp Community
-</a>
+  <div class="top-bar-line1">
+    <a href="https://chat.whatsapp.com/CSs0Ywlo8P25N8lH5oMFJK?mode=gi_t" target="_blank">
+      🚀 Join Our WhatsApp Community
+    </a>
+  </div>
+  <div class="top-bar-line2">
+    <span class="price-old">Rs.2000</span>
+    <span class="price-arrow">➡️</span>
+    <span class="price-new">Rs.300 Only</span>
+    <span class="seats-badge">🔥 Limited Seats Only</span>
+    <button class="topbar-register-btn" onclick="openModal()">📝 Register Now</button>
+  </div>
 </div>
 
 <!-- NAVBAR -->
-
 <nav>
-
-<div class="logo">
-AI with Musfirah
-</div>
-
+<div class="logo">AI with Musfirah</div>
 <ul>
 <li><a href="#home">Home</a></li>
 <li><a href="#courses">Courses</a></li>
 <li><a href="#reviews">Reviews</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
-
 </nav>
 
 <!-- HERO -->
-
 <section class="hero" id="home">
-
-<h1>
-Learn YouTube Automation & Start Earning Online
-</h1>
-
-<div class="subtext">
-Create Faceless Videos & Grow Your Online Income
-</div>
-
-<p>
-Learn AI tools, YouTube automation, script writing,
-SEO, monetization, thumbnail creation, and video editing step by step.
-</p>
-
+<h1>Learn YouTube Automation & Start Earning Online</h1>
+<div class="subtext">Create Faceless Videos & Grow Your Online Income</div>
+<p>Learn AI tools, YouTube automation, script writing, SEO, monetization, thumbnail creation, and video editing step by step.</p>
 <div class="buttons">
-
-<a href="#" class="btn">
-📥 Download Free Guide
-</a>
-
-<button class="btn workshop-btn" onclick="openModal()">
-🎓 Free Workshop – Rs.300
-</button>
-
+<button class="btn" onclick="openPdfModal()">📥 Free Guide</button>
+<button class="btn workshop-btn" onclick="openModal()">🎓 Free Workshop – Rs.300</button>
+<button class="btn niches-btn" onclick="openNichesModal()">💰 Viral Niches</button>
 </div>
-
 <div class="trust-section">
-
-<div class="trust-badge">
-🚀 Beginner Friendly
-<span>Easy step-by-step training for complete beginners.</span>
+<div class="trust-badge">🚀 Beginner Friendly<span>Easy step-by-step training for complete beginners.</span></div>
+<div class="trust-badge">🤖 AI Tools Included<span>Learn ChatGPT, AI video tools, thumbnails & automation.</span></div>
+<div class="trust-badge">📚 Step-by-Step Training<span>Complete roadmap from setup to monetization.</span></div>
 </div>
-
-<div class="trust-badge">
-🤖 AI Tools Included
-<span>Learn ChatGPT, AI video tools, thumbnails & automation.</span>
-</div>
-
-<div class="trust-badge">
-🔓 Lifetime Access
-<span>Watch lessons anytime without expiry.</span>
-</div>
-
-<div class="trust-badge">
-📚 Step-by-Step Training
-<span>Complete roadmap from setup to monetization.</span>
-</div>
-
-</div>
-
 </section>
 
 <!-- PREMIUM COURSES -->
-
 <section id="courses">
-
 <h2>Premium Courses</h2>
-
 <div class="premium-cards">
-
 <div class="premium-card">
-
 <img src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?q=80&w=1200&auto=format&fit=crop">
-
 <div class="course-content">
-
 <h3>YouTube Automation</h3>
-
 <p>🔥 Premium Training</p>
 <p>⏰ Duration: 2 Weeks</p>
-<p>📚 10 Lessons</p>
 <p>🎥 4 Live Sessions</p>
-
-<a href="#contact" class="enroll-btn">
-Enroll Now
-</a>
-
+<div class="course-lessons">
+  <strong>📚 What You'll Learn:</strong>
+  <ul>
+    <li>✅ YouTube Automation Basics</li>
+    <li>✅ Channel Setup & Optimization</li>
+    <li>✅ AI Video Creation Tools</li>
+    <li>✅ Script Writing Secrets</li>
+    <li>✅ SEO & Keyword Research</li>
+    <li>✅ Thumbnail Design Tips</li>
+    <li>✅ Video Editing Basics</li>
+    <li>✅ Monetization Strategy</li>
+    <li>✅ Grow Your Audience</li>
+    <li>✅ Passive Income Methods</li>
+  </ul>
 </div>
-
+<button class="enroll-btn" onclick="openCourseModal()">Enroll Now</button>
 </div>
-
 </div>
-
+</div>
 </section>
 
 <!-- LEARN -->
-
 <section>
-
 <h2>What You'll Learn</h2>
-
 <div class="learn-container">
-
 <div class="learn-box">
 <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1200&auto=format&fit=crop">
-<div class="learn-content">
-🎬 AI Video Making
+<div class="learn-content">🎬 AI Video Making</div>
+<button class="learn-btn" onclick="openLearnModal('ai-video')">Learn More</button>
 </div>
-</div>
-
 <div class="learn-box">
 <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1200&auto=format&fit=crop">
-<div class="learn-content">
-✍️ Script Writing
+<div class="learn-content">✍️ Script Writing</div>
+<button class="learn-btn" onclick="openLearnModal('script-writing')">Learn More</button>
 </div>
-</div>
-
 <div class="learn-box">
 <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&w=1200&auto=format&fit=crop">
-<div class="learn-content">
-🔥 Viral Topics Finding
+<div class="learn-content">🔥 Viral Topics Finding</div>
+<button class="learn-btn" onclick="openLearnModal('viral-topics')">Learn More</button>
 </div>
 </div>
-
-</div>
-
 </section>
 
 <!-- TESTIMONIALS -->
-
 <section class="testimonials" id="reviews">
-
 <h2>Student Success Stories</h2>
-
 <div class="testimonial-container">
-
 <div class="testimonial-card">
-<img class="student-img" src="https://randomuser.me/api/portraits/men/32.jpg">
+<img class="student-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop">
 <h3>Ahmed Khan</h3>
-<p class="review">
-I started my faceless YouTube channel after joining this course and now my videos are getting thousands of views.
-</p>
+<p class="review">I started my faceless YouTube channel after joining this course and now my videos are getting thousands of views.</p>
 </div>
-
 <div class="testimonial-card">
-<img class="student-img" src="https://randomuser.me/api/portraits/women/44.jpg">
+<img class="student-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop">
 <h3>Sarah Ali</h3>
-<p class="review">
-The AI video editing lessons were super easy and helped me create professional content fast.
-</p>
+<p class="review">The AI video editing lessons were super easy and helped me create professional content fast.</p>
 </div>
-
 <div class="testimonial-card">
-<img class="student-img" src="https://randomuser.me/api/portraits/men/75.jpg">
+<img class="student-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop">
 <h3>Usman Malik</h3>
-<p class="review">
-I learned SEO and monetization strategies that helped my channel grow much faster.
-</p>
+<p class="review">I learned SEO and monetization strategies that helped my channel grow much faster.</p>
 </div>
-
 </div>
-
 </section>
 
 <!-- CONTACT -->
-
 <section class="contact" id="contact">
-
 <h2>Join My Community</h2>
-
-<p>
-Want to learn AI and grow online? Join the WhatsApp community now.
-</p>
-
+<p>Want to learn AI and grow online? Join the WhatsApp community now.</p>
 <div class="contact-buttons">
-
-<a href="https://chat.whatsapp.com/" class="btn community-btn">
-🚀 Join WhatsApp Community
-</a>
-
-<a href="https://instagram.com/" class="btn insta-btn">
-📸 Instagram
-</a>
-
+<a href="https://chat.whatsapp.com/CSs0Ywlo8P25N8lH5oMFJK?mode=gi_t" class="btn community-btn" target="_blank">🚀 Join WhatsApp Community</a>
+<a href="https://www.instagram.com/aiwithmusfirah" class="btn insta-btn" target="_blank">📸 Instagram</a>
 </div>
-
 </section>
 
-<!-- FLOAT BUTTON -->
+<!-- WHATSAPP FLOAT -->
+<a href="https://chat.whatsapp.com/CSs0Ywlo8P25N8lH5oMFJK?mode=gi_t" class="whatsapp-float" target="_blank">📲</a>
 
-<a href="https://chat.whatsapp.com/" class="whatsapp-float">
-📲
-</a>
-
-<!-- REGISTRATION MODAL -->
-
-<div class="modal" id="workshopModal">
-
-<div class="modal-content">
-
-<div class="close-btn" onclick="closeModal()">
-×
-</div>
-
-<h2>
-Workshop Registration
-</h2>
-
-<form id="workshopForm">
-
-<div class="input-box">
-<input type="text" name="name" placeholder="Enter Your Name" required>
-</div>
-
-<div class="input-box">
-<input type="email" name="email" placeholder="Enter Your Gmail" required>
-</div>
-
-<div class="input-box">
-<input type="tel" name="phone" placeholder="Enter WhatsApp Number" required>
-</div>
-
-<button type="submit" class="submit-btn">
-Submit Information
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-<!-- PAYMENT MODAL -->
-
-<div class="modal" id="paymentModal">
-
-<div class="modal-content">
-
-<div class="close-btn" onclick="closePaymentModal()">
-×
-</div>
-
-<h2>
-Complete Your Payment
-</h2>
-
-<p style="text-align:center;margin-bottom:20px;">
-Workshop Fee: <b>Rs.300</b>
-</p>
-
-<div class="payment-box">
-
-<p><b>Bank Name:</b> MCB Bank Limited</p>
-
-<p><b>Account Title:</b> Irtaza Tahir</p>
-
-<p><b>Account Number:</b> 1643789581007865</p>
-
-<p><b>IBAN:</b> PK04MUCB1643789581007865</p>
-
-</div>
-
-<p style="text-align:center;margin-bottom:25px;color:#ccc;line-height:1.7;">
-After payment send your payment screenshot on WhatsApp.
-</p>
-
+<!-- PDF MODAL -->
+<div class="modal" id="pdfModal">
+<div class="pdf-modal-content">
+<div class="close-btn" onclick="closePdfModal()">×</div>
+<h2>📥 Free Guide – AI YouTube Automation</h2>
+<div class="pdf-buttons-grid" id="pdfButtonsGrid"></div>
 <div style="text-align:center;">
-
-<a
-href="https://wa.me/923014411354?text=Assalamualaikum%20I%20have%20completed%20the%20payment%20for%20the%20AI%20Workshop.%20Here%20is%20my%20payment%20screenshot."
-target="_blank"
-class="btn workshop-btn"
->
-
-✅ Send Payment Screenshot
-
-</a>
-
+<button onclick="closePdfModal()" class="btn" style="background:rgba(255,255,255,0.1);margin-top:20px;">✖ Close</button>
+</div>
+</div>
 </div>
 
+<!-- DETAIL MODAL -->
+<div class="modal" id="detailModal">
+<div class="detail-modal-content">
+<div class="close-btn" onclick="closeDetailModal()">×</div>
+<h2 id="detailTitle"></h2>
+<div class="detail-content" id="detailContent"></div>
+<div style="text-align:center;margin-top:30px;">
+<button onclick="closeDetailModal()" class="btn">✖ Close</button>
+</div>
+</div>
 </div>
 
+<!-- LEARN MODAL -->
+<div class="modal" id="learnModal">
+<div class="learn-modal-content">
+<div class="close-btn" onclick="closeLearnModal()">×</div>
+<h2 id="learnTitle"></h2>
+<div class="learn-content-box" id="learnContent"></div>
+<div style="text-align:center;margin-top:30px;">
+<button onclick="closeLearnModal()" class="btn workshop-btn">✖ Close</button>
+</div>
+</div>
+</div>
+
+<!-- NICHES MODAL -->
+<div class="modal" id="nichesModal">
+<div class="niches-modal-content">
+<div class="close-btn" onclick="closeNichesModal()">×</div>
+<h2>💰 Viral Niches & CPM/RPM Rates</h2>
+<p style="text-align:center;color:#ddd;margin-bottom:20px;">Choose high-earning niches to maximize your YouTube income</p>
+<table class="niches-table">
+  <thead>
+    <tr>
+      <th>Niche</th>
+      <th>CPM Range</th>
+      <th>RPM Range</th>
+      <th>Difficulty</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="niche-name">💰 Finance & Investing</td>
+      <td class="rpm-high">$15 - $50</td>
+      <td class="rpm-high">$8 - $30</td>
+      <td style="color:#ff9500;">Medium</td>
+    </tr>
+    <tr>
+      <td class="niche-name">💻 Technology & Gadgets</td>
+      <td class="rpm-high">$10 - $40</td>
+      <td class="rpm-high">$5 - $25</td>
+      <td style="color:#ff9500;">Medium</td>
+    </tr>
+    <tr>
+      <td class="niche-name">📱 Digital Marketing</td>
+      <td class="rpm-high">$12 - $45</td>
+      <td class="rpm-high">$6 - $28</td>
+      <td style="color:#ff9500;">Medium</td>
+    </tr>
+    <tr>
+      <td class="niche-name">🏠 Real Estate</td>
+      <td class="rpm-high">$10 - $35</td>
+      <td class="rpm-high">$6 - $22</td>
+      <td style="color:#ff9500;">Medium</td>
+    </tr>
+    <tr>
+      <td class="niche-name">💼 Business & Entrepreneurship</td>
+      <td class="rpm-high">$8 - $30</td>
+      <td class="rpm-high">$4 - $18</td>
+      <td style="color:#ffff00;">Easy</td>
+    </tr>
+    <tr>
+      <td class="niche-name">🎓 Online Education</td>
+      <td class="rpm-medium">$5 - $20</td>
+      <td class="rpm-medium">$2 - $12</td>
+      <td style="color:#ffff00;">Easy</td>
+    </tr>
+    <tr>
+      <td class="niche-name">💪 Health & Fitness</td>
+      <td class="rpm-medium">$4 - $15</td>
+      <td class="rpm-medium">$2 - $10</td>
+      <td style="color:#ffff00;">Easy</td>
+    </tr>
+    <tr>
+      <td class="niche-name">🍕 Food & Cooking</td>
+      <td class="rpm-low">$2 - $10</td>
+      <td class="rpm-low">$1 - $6</td>
+      <td style="color:#ffff00;">Easy</td>
+    </tr>
+    <tr>
+      <td class="niche-name">🎮 Gaming</td>
+      <td class="rpm-low">$3 - $12</td>
+      <td class="rpm-low">$1 - $7</td>
+      <td style="color:#ffff00;">Easy</td>
+    </tr>
+    <tr>
+      <td class="niche-name">🚗 Automotive</td>
+      <td class="rpm-high">$8 - $28</td>
+      <td class="rpm-high">$5 - $18</td>
+      <td style="color:#ff9500;">Medium</td>
+    </tr>
+    <tr>
+      <td class="niche-name">🏥 Medical & Health</td>
+      <td class="rpm-high">$12 - $50</td>
+      <td class="rpm-high">$8 - $35</td>
+      <td style="color:#ff0000;">Hard</td>
+    </tr>
+    <tr>
+      <td class="niche-name">🎬 Entertainment</td>
+      <td class="rpm-low">$2 - $8</td>
+      <td class="rpm-low">$1 - $5</td>
+      <td style="color:#ffff00;">Easy</td>
+    </tr>
+    <tr>
+      <td class="niche-name">📚 Self-Help & Motivation</td>
+      <td class="rpm-medium">$4 - $18</td>
+      <td class="rpm-medium">$2 - $12</td>
+      <td style="color:#ffff00;">Easy</td>
+    </tr>
+    <tr>
+      <td class="niche-name">🔧 DIY & Home Improvement</td>
+      <td class="rpm-medium">$5 - $16</td>
+      <td class="rpm-medium">$3 - $10</td>
+      <td style="color:#ffff00;">Easy</td>
+    </tr>
+    <tr>
+      <td class="niche-name">✈️ Travel & Vlogging</td>
+      <td class="rpm-low">$3 - $12</td>
+      <td class="rpm-low">$1 - $8</td>
+      <td style="color:#ffff00;">Easy</td>
+    </tr>
+  </tbody>
+</table>
+
+<div style="margin-top:30px;padding:20px;background:rgba(102,126,234,0.1);border-radius:10px;border-left:4px solid #667eea;">
+  <h3 style="color:#667eea;margin-bottom:10px;">📊 Understanding CPM vs RPM:</h3>
+  <p style="color:#ddd;margin-bottom:10px;"><strong>CPM (Cost Per Mille):</strong> What advertisers pay per 1000 impressions (before YouTube cut)</p>
+  <p style="color:#ddd;margin-bottom:10px;"><strong>RPM (Revenue Per Mille):</strong> What you actually earn per 1000 views (after YouTube's 45% cut)</p>
+  <p style="color:#ddd;"><strong>Rough Formula:</strong> RPM = CPM × 0.55 (YouTube takes 45%, you get 55%)</p>
+</div>
+
+<div style="text-align:center;margin-top:30px;">
+<button onclick="closeNichesModal()" class="btn niches-btn">✖ Close</button>
+</div>
+</div>
+</div>
+
+<!-- REGISTRATION MODAL (WORKSHOP) -->
+<div class="modal" id="workshopModal">
+<div class="modal-content">
+<div class="close-btn" onclick="closeModal()">×</div>
+<h2>Workshop Registration</h2>
+<form id="workshopForm">
+<div class="input-box"><input type="text" name="name" placeholder="Enter Your Name" required></div>
+<div class="input-box"><input type="email" name="email" placeholder="Enter Your Gmail" required></div>
+<div class="input-box"><input type="tel" name="phone" placeholder="Enter WhatsApp Number" required></div>
+<button type="submit" class="submit-btn">Submit Information</button>
+</form>
+</div>
+</div>
+
+<!-- COURSE REGISTRATION MODAL -->
+<div class="modal" id="courseModal">
+<div class="modal-content">
+<div class="close-btn" onclick="closeCourseModal()">×</div>
+<h2>Course Enrollment</h2>
+<form id="courseForm">
+<div class="input-box"><input type="text" name="name" placeholder="Enter Your Name" required></div>
+<div class="input-box"><input type="email" name="email" placeholder="Enter Your Gmail" required></div>
+<div class="input-box"><input type="tel" name="phone" placeholder="Enter WhatsApp Number" required></div>
+<button type="submit" class="submit-btn">Submit Information</button>
+</form>
+</div>
+</div>
+
+<!-- PAYMENT MODAL (WORKSHOP) -->
+<div class="modal" id="paymentModal">
+<div class="modal-content">
+<div class="close-btn" onclick="closePaymentModal()">×</div>
+<h2>Complete Your Payment</h2>
+<p style="text-align:center;margin-bottom:20px;">Workshop Fee: <b>Rs.300</b></p>
+<div class="payment-box">
+<p><b>Bank Name:</b> MCB Bank Limited</p>
+<p><b>Account Title:</b> Irtaza Tahir</p>
+<p><b>Account Number:</b> 1643789581007865</p>
+<p><b>IBAN:</b> PK04MUCB1643789581007865</p>
+</div>
+<p style="text-align:center;margin-bottom:25px;color:#ccc;line-height:1.7;">After payment send your payment screenshot on WhatsApp.</p>
+<div style="text-align:center;">
+<a href="https://wa.me/923014411354?text=Assalamualaikum%20I%20have%20completed%20the%20payment%20for%20the%20AI%20Workshop.%20Here%20is%20my%20payment%20screenshot." target="_blank" class="btn workshop-btn">✅ Send Payment Screenshot</a>
+</div>
+</div>
+</div>
+
+<!-- COURSE PAYMENT MODAL -->
+<div class="modal" id="coursePaymentModal">
+<div class="modal-content">
+<div class="close-btn" onclick="closeCoursePaymentModal()">×</div>
+<h2>Complete Your Course Payment</h2>
+<p style="text-align:center;margin-bottom:20px;">Premium Course Fee: <b>Rs.4,999</b></p>
+<div class="payment-box">
+<p><b>Bank Name:</b> MCB Bank Limited</p>
+<p><b>Account Title:</b> Irtaza Tahir</p>
+<p><b>Account Number:</b> 1643789581007865</p>
+<p><b>IBAN:</b> PK04MUCB1643789581007865</p>
+</div>
+<p style="text-align:center;margin-bottom:25px;color:#ccc;line-height:1.7;">After payment send your payment screenshot on WhatsApp.</p>
+<div style="text-align:center;">
+<a href="https://wa.me/923014411354?text=Assalamualaikum%20I%20have%20completed%20the%20payment%20for%20the%20YouTube%20Automation%20Premium%20Course%20(Rs.4999).%20Here%20is%20my%20payment%20screenshot." target="_blank" class="btn workshop-btn">✅ Send Payment Screenshot</a>
+</div>
+</div>
 </div>
 
 <!-- FOOTER -->
-
-<footer>
-© 2026 AI with Musfirah | All Rights Reserved
-</footer>
-
-<!-- SCRIPT -->
+<footer>© 2026 AI with Musfirah | All Rights Reserved</footer>
 
 <script>
+// Guide Content Data
+const guideContent = {
+  'youtube-automation': {
+    title: '✅ What is YouTube Automation?',
+    content: `
+      <h3>Understanding YouTube Automation</h3>
+      <p>YouTube automation is the process of creating and publishing video content with minimal manual effort using AI tools and smart strategies.</p>
+      
+      <h3>Key Benefits:</h3>
+      <ul>
+        <li><strong>Save Time:</strong> Automate repetitive tasks like video editing and uploading</li>
+        <li><strong>Passive Income:</strong> Earn money while you sleep through ad revenue</li>
+        <li><strong>Scale Quickly:</strong> Manage multiple channels without burning out</li>
+        <li><strong>Consistency:</strong> Upload on schedule automatically</li>
+        <li><strong>Quality Content:</strong> Use AI to maintain professional standards</li>
+      </ul>
 
-function openModal(){
-document.getElementById("workshopModal").style.display="flex";
+      <h3>Why is it Popular?</h3>
+      <p>With the right tools and strategy, anyone can start a faceless YouTube channel that generates thousands of rupees monthly without showing their face or being on camera.</p>
+    `
+  },
+  'setup-channel': {
+    title: '✅ Setting Up Your Channel',
+    content: `
+      <h3>Step-by-Step Channel Setup</h3>
+      
+      <h3>Step 1: Create Google Account</h3>
+      <ul>
+        <li>Go to google.com and create new account</li>
+        <li>Use professional email (avoid funny names)</li>
+        <li>Complete verification process</li>
+      </ul>
+
+      <h3>Step 2: Create YouTube Channel</h3>
+      <ul>
+        <li>Open youtube.com and sign in</li>
+        <li>Click on profile icon → Create a channel</li>
+        <li>Choose professional channel name (related to your niche)</li>
+      </ul>
+
+      <h3>Step 3: Optimize Channel</h3>
+      <ul>
+        <li>Add professional profile picture</li>
+        <li>Write compelling channel description</li>
+        <li>Add channel art (2560x1440 pixels)</li>
+        <li>Create channel trailer</li>
+        <li>Add links to your social media</li>
+      </ul>
+
+      <h3>Step 4: Channel Settings</h3>
+      <ul>
+        <li>Enable monetization eligibility</li>
+        <li>Set up upload schedule</li>
+        <li>Configure comment settings</li>
+        <li>Enable community tab</li>
+      </ul>
+    `
+  },
+  'ai-video': {
+    title: '✅ AI Video Creation Tools',
+    content: `
+      <h3>Top AI Video Tools for YouTube Automation</h3>
+      
+      <h3>1. HeyGen (Best for Avatar Videos)</h3>
+      <ul>
+        <li>Create videos with AI avatars</li>
+        <li>100+ professional looking avatars</li>
+        <li>Multi-language support</li>
+        <li>Price: Free + Premium plans</li>
+      </ul>
+
+      <h3>2. Synthesia</h3>
+      <ul>
+        <li>Generate AI presenter videos</li>
+        <li>30+ languages supported</li>
+        <li>Perfect for tutorials and explainers</li>
+        <li>Price: Premium plans available</li>
+      </ul>
+
+      <h3>3. Pictory AI</h3>
+      <ul>
+        <li>Convert long videos to shorts</li>
+        <li>Auto subtitle generation</li>
+        <li>AI scriptwriting</li>
+        <li>Price: Free + Premium plans</li>
+      </ul>
+
+      <h3>4. Descript</h3>
+      <ul>
+        <li>Edit videos like editing documents</li>
+        <li>Auto transcription and subtitles</li>
+        <li>AI-powered video editing</li>
+        <li>Price: Free + Premium</li>
+      </ul>
+
+      <h3>5. Invideo AI</h3>
+      <ul>
+        <li>Complete video creation in minutes</li>
+        <li>AI script generation</li>
+        <li>Stock footage included</li>
+        <li>Price: Freemium model</li>
+      </ul>
+    `
+  },
+  'script-writing': {
+    title: '✅ Script Writing Secrets',
+    content: `
+      <h3>How to Write Viral YouTube Scripts</h3>
+      
+      <h3>Formula for Viral Scripts:</h3>
+      <ul>
+        <li><strong>Hook (First 3 seconds):</strong> Grab attention immediately</li>
+        <li><strong>Problem:</strong> Identify viewer's pain point</li>
+        <li><strong>Agitation:</strong> Make problem feel urgent</li>
+        <li><strong>Solution:</strong> Provide clear solution</li>
+        <li><strong>Call to Action:</strong> Tell what to do next</li>
+      </ul>
+
+      <h3>Script Writing Tools:</h3>
+      <ul>
+        <li><strong>ChatGPT:</strong> Generate scripts in seconds</li>
+        <li><strong>Claude AI:</strong> More creative scripts</li>
+        <li><strong>Jasper:</strong> Specialized for video scripts</li>
+      </ul>
+
+      <h3>Pro Tips for Scripts:</h3>
+      <ul>
+        <li>Keep sentences short and punchy</li>
+        <li>Use conversational language</li>
+        <li>Include power words (amazing, secrets, revealed)</li>
+        <li>Add numbers (5 ways, 10 tips)</li>
+        <li>Tell stories, don't lecture</li>
+        <li>Always end with clear CTA</li>
+      </ul>
+
+      <h3>Script Length:</h3>
+      <ul>
+        <li>Shorts: 30-60 seconds (100-150 words)</li>
+        <li>Regular videos: 10 minutes (1800-2000 words)</li>
+        <li>Long-form: 20+ minutes (3500+ words)</li>
+      </ul>
+    `
+  },
+  'seo-keywords': {
+    title: '✅ SEO & Keyword Research',
+    content: `
+      <h3>YouTube SEO Mastery</h3>
+      
+      <h3>Why SEO Matters:</h3>
+      <ul>
+        <li>Higher rankings in YouTube search</li>
+        <li>Better visibility to your target audience</li>
+        <li>More organic views (no paid ads needed)</li>
+        <li>Improved channel growth</li>
+      </ul>
+
+      <h3>Keyword Research Tools:</h3>
+      <ul>
+        <li><strong>TubeBuddy:</strong> Best overall tool</li>
+        <li><strong>VidIQ:</strong> Detailed analytics</li>
+        <li><strong>Google Trends:</strong> Free trending topics</li>
+        <li><strong>Keyword Planner:</strong> Search volume data</li>
+        <li><strong>AnswerThePublic:</strong> Find questions people ask</li>
+      </ul>
+
+      <h3>Optimization Checklist:</h3>
+      <ul>
+        <li><strong>Title:</strong> Include main keyword (40-60 characters)</li>
+        <li><strong>Description:</strong> First line with keyword, links</li>
+        <li><strong>Tags:</strong> 5-10 relevant tags</li>
+        <li><strong>Hashtags:</strong> 2-3 relevant hashtags</li>
+        <li><strong>Thumbnail:</strong> High contrast, readable text</li>
+        <li><strong>Subtitles:</strong> Include keywords naturally</li>
+      </ul>
+
+      <h3>Pro Keyword Strategy:</h3>
+      <ul>
+        <li>Target low competition + high volume keywords</li>
+        <li>Use long-tail keywords (3+ words)</li>
+        <li>Analyze top 3 competing videos</li>
+        <li>Create better versions of existing content</li>
+      </ul>
+    `
+  },
+  'thumbnail-design': {
+    title: '✅ Thumbnail Design Tips',
+    content: `
+      <h3>Create Click-Worthy Thumbnails</h3>
+      
+      <h3>Why Thumbnails Matter:</h3>
+      <ul>
+        <li>45% of CTR depends on thumbnail</li>
+        <li>First thing people notice</li>
+        <li>Determines if they click</li>
+        <li>More important than title sometimes</li>
+      </ul>
+
+      <h3>Thumbnail Design Tools:</h3>
+      <ul>
+        <li><strong>Canva:</strong> Easiest for beginners</li>
+        <li><strong>Photoshop:</strong> Professional option</li>
+        <li><strong>GIMP:</strong> Free alternative</li>
+        <li><strong>Adobe Express:</strong> Quick thumbnails</li>
+      </ul>
+
+      <h3>Proven Thumbnail Formulas:</h3>
+      <ul>
+        <li><strong>Numbers Formula:</strong> "5 Ways to..." with big numbers</li>
+        <li><strong>Contrast Formula:</strong> Bright colors + dark background</li>
+        <li><strong>Emotion Formula:</strong> Shocked/surprised face</li>
+        <li><strong>Arrow Formula:</strong> Point to important element</li>
+        <li><strong>Text Formula:</strong> Bold text with borders</li>
+      </ul>
+
+      <h3>Design Guidelines:</h3>
+      <ul>
+        <li><strong>Size:</strong> 1280 x 720 pixels</li>
+        <li><strong>Colors:</strong> Use 3-4 colors max</li>
+        <li><strong>Text:</strong> Large, bold, readable from thumbnail size</li>
+        <li><strong>Contrast:</strong> Make text stand out from background</li>
+        <li><strong>Simplicity:</strong> Avoid cluttering</li>
+        <li><strong>Consistency:</strong> Similar style across videos</li>
+      </ul>
+
+      <h3>A/B Testing Thumbnails:</h3>
+      <ul>
+        <li>Test 2 different thumbnails per week</li>
+        <li>Compare click-through rate (CTR)</li>
+        <li>Use better one in future videos</li>
+      </ul>
+    `
+  },
+  'video-editing': {
+    title: '✅ Video Editing Basics',
+    content: `
+      <h3>Professional Video Editing for Beginners</h3>
+      
+      <h3>Best Video Editing Software:</h3>
+      <ul>
+        <li><strong>DaVinci Resolve:</strong> Professional + FREE</li>
+        <li><strong>CapCut:</strong> Easy for beginners</li>
+        <li><strong>Adobe Premiere:</strong> Industry standard</li>
+        <li><strong>Vegas Pro:</strong> Great effects</li>
+      </ul>
+
+      <h3>Essential Editing Skills:</h3>
+      <ul>
+        <li><strong>Cutting:</strong> Remove silent/boring parts</li>
+        <li><strong>Pacing:</strong> Keep video fast and engaging</li>
+        <li><strong>Transitions:</strong> Smooth scene changes</li>
+        <li><strong>Effects:</strong> Add visual interest</li>
+        <li><strong>Color Correction:</strong> Professional look</li>
+        <li><strong>Audio:</strong> Clear sound + background music</li>
+      </ul>
+
+      <h3>Editing Workflow:</h3>
+      <ul>
+        <li>Import raw footage</li>
+        <li>Cut out pauses and mistakes</li>
+        <li>Arrange clips in logical order</li>
+        <li>Add transitions between clips</li>
+        <li>Add music and sound effects</li>
+        <li>Add text overlays and subtitles</li>
+        <li>Color grade for professional look</li>
+        <li>Final review and export</li>
+      </ul>
+
+      <h3>Quick Editing Tips:</h3>
+      <ul>
+        <li>Keep cuts every 3-4 seconds to maintain engagement</li>
+        <li>Use J-cuts and L-cuts for smooth transitions</li>
+        <li>Add music at 40-50% volume</li>
+        <li>Use keywords in text overlays for SEO</li>
+        <li>Always add subtitles (50% watch without sound)</li>
+      </ul>
+
+      <h3>Export Settings:</h3>
+      <ul>
+        <li><strong>Resolution:</strong> 1920x1080 (1080p minimum)</li>
+        <li><strong>Frame Rate:</strong> 24fps or 30fps</li>
+        <li><strong>Bitrate:</strong> 8-16 Mbps for quality</li>
+        <li><strong>Format:</strong> MP4 (most compatible)</li>
+      </ul>
+    `
+  },
+  'monetization': {
+    title: '✅ Monetization Strategy',
+    content: `
+      <h3>Earn Money from YouTube</h3>
+      
+      <h3>YouTube Partner Program Requirements:</h3>
+      <ul>
+        <li>1,000 subscribers</li>
+        <li>4,000 watch hours (in last 12 months)</li>
+        <li>18+ years old</li>
+        <li>No copyright strikes</li>
+        <li>Follow YouTube Partner policies</li>
+      </ul>
+
+      <h3>Revenue Streams:</h3>
+      <ul>
+        <li><strong>AdSense Revenue:</strong> $2-10 per 1000 views</li>
+        <li><strong>Channel Memberships:</strong> Revenue share with YouTube</li>
+        <li><strong>Super Chat & Super Thanks:</strong> Direct from viewers</li>
+        <li><strong>Shopping Features:</strong> Sell products</li>
+        <li><strong>Affiliate Marketing:</strong> Link to products</li>
+        <li><strong>Sponsorships:</strong> Brand deals ($500-10,000+)</li>
+      </ul>
+
+      <h3>How to Monetize Faster:</h3>
+      <ul>
+        <li>Focus on engagement, not just views</li>
+        <li>Build loyal audience first</li>
+        <li>Create content in high-CPM niches</li>
+        <li>Use keywords that attract wealthy viewers</li>
+        <li>Engage with your audience daily</li>
+      </ul>
+
+      <h3>High CPM Niches:</h3>
+      <ul>
+        <li>Business & Finance ($10-50 CPM)</li>
+        <li>Technology & Gadgets ($5-20 CPM)</li>
+        <li>Digital Marketing ($8-30 CPM)</li>
+        <li>Health & Fitness ($3-15 CPM)</li>
+        <li>Real Estate ($5-25 CPM)</li>
+      </ul>
+
+      <h3>Income Growth Strategy:</h3>
+      <ul>
+        <li>Month 1-3: Build to 1000 subscribers</li>
+        <li>Month 4-6: Reach 4000 watch hours</li>
+        <li>Month 7-12: Grow to 10,000 subscribers</li>
+        <li>Year 2+: Scale through multiple channels</li>
+      </ul>
+    `
+  },
+  'grow-audience': {
+    title: '✅ Grow Your Audience',
+    content: `
+      <h3>Proven Strategies to Grow Fast</h3>
+      
+      <h3>Content Strategy:</h3>
+      <ul>
+        <li><strong>Consistency:</strong> Upload 2-3 times per week</li>
+        <li><strong>Series:</strong> Create series (people subscribe for series)</li>
+        <li><strong>Trending Topics:</strong> Follow trends in your niche</li>
+        <li><strong>Evergreen Content:</strong> Videos that stay relevant</li>
+      </ul>
+
+      <h3>Engagement Tactics:</h3>
+      <ul>
+        <li>Reply to every comment in first 24 hours</li>
+        <li>Pin top comments to encourage discussion</li>
+        <li>Ask questions in videos and descriptions</li>
+        <li>Create polls in community tab</li>
+        <li>Host live streams regularly</li>
+      </ul>
+
+      <h3>Cross-Platform Promotion:</h3>
+      <ul>
+        <li>Share clips on TikTok, Instagram Reels</li>
+        <li>Post behind-the-scenes on Stories</li>
+        <li>Share to Twitter/X with key points</li>
+        <li>Link in Reddit discussions (helpful)</li>
+        <li>Collaborate with other creators</li>
+      </ul>
+
+      <h3>YouTube Algorithm Hacks:</h3>
+      <ul>
+        <li>Keep videos between 8-15 minutes (sweet spot)</li>
+        <li>Aim for 50%+ average view duration</li>
+        <li>Create playlists (increase watch time)</li>
+        <li>Use chapters (improve user experience)</li>
+        <li>Add cards and end screens (internal promotion)</li>
+      </ul>
+
+      <h3>Collaboration Strategy:</h3>
+      <ul>
+        <li>Find creators with similar size channels</li>
+        <li>Do guest appearances on their channel</li>
+        <li>Have them on your channel</li>
+        <li>Create challenges together</li>
+        <li>Share audience with mutual benefit</li>
+      </ul>
+
+      <h3>Growth Milestones:</h3>
+      <ul>
+        <li>100 subs: First real audience</li>
+        <li>1000 subs: YouTube monetization eligibility</li>
+        <li>10,000 subs: Early influencer status</li>
+        <li>100,000 subs: Serious influencer</li>
+        <li>1M+ subs: Category expert</li>
+      </ul>
+    `
+  },
+  'passive-income': {
+    title: '✅ Passive Income Methods',
+    content: `
+      <h3>Multiple Income Streams from YouTube</h3>
+      
+      <h3>1. Ad Revenue (YouTube AdSense)</h3>
+      <ul>
+        <li>Average: $3-5 per 1000 views</li>
+        <li>Varies by geography and content type</li>
+        <li>Most passive income stream</li>
+        <li>Grows exponentially as you scale</li>
+      </ul>
+
+      <h3>2. Affiliate Marketing</h3>
+      <ul>
+        <li>Recommend products in description</li>
+        <li>Earn 5-40% commission per sale</li>
+        <li>Popular networks: Amazon, Awin, CJ Affiliate</li>
+        <li>Best for tech/gadget channels</li>
+        <li>Income potential: $500-5000/month</li>
+      </ul>
+
+      <h3>3. Digital Products</h3>
+      <ul>
+        <li>Create online courses</li>
+        <li>Sell e-books and templates</li>
+        <li>Premium membership access</li>
+        <li>High profit margins</li>
+        <li>Income potential: $1000-10,000/month</li>
+      </ul>
+
+      <h3>4. Sponsorships & Brand Deals</h3>
+      <ul>
+        <li>Brands pay to promote products</li>
+        <li>$500-$50,000+ per video</li>
+        <li>Depends on audience size and engagement</li>
+        <li>Best for niche channels</li>
+      </ul>
+
+      <h3>5. YouTube Premium Revenue</h3>
+      <ul>
+        <li>Share of Premium member fees</li>
+        <li>Passive based on watch time</li>
+        <li>Usually 10-20% of AdSense</li>
+      </ul>
+
+      <h3>Building Passive Income (12 Month Plan):</h3>
+      <ul>
+        <li><strong>Month 1-3:</strong> Build audience, setup AdSense</li>
+        <li><strong>Month 4-6:</strong> Start affiliate marketing</li>
+        <li><strong>Month 7-9:</strong> Launch digital product</li>
+        <li><strong>Month 10-12:</strong> Approach brands for sponsorships</li>
+      </ul>
+
+      <h3>Income Prediction:</h3>
+      <ul>
+        <li>10,000 subs: $500-2000/month</li>
+        <li>50,000 subs: $2000-8000/month</li>
+        <li>100,000 subs: $5000-20,000/month</li>
+        <li>500,000+ subs: $50,000-500,000+/month</li>
+      </ul>
+    `
+  }
+};
+
+// Learn Content Data
+const learnContent = {
+  'ai-video': {
+    title: '🎬 AI Video Making - Complete Guide',
+    content: `
+      <h3>Introduction to AI Video Creation</h3>
+      <p>AI video making has revolutionized content creation. You no longer need expensive equipment or filming skills to create professional videos. Learn how to use AI tools to generate stunning videos automatically.</p>
+
+      <h3>Best AI Video Tools</h3>
+      <ul>
+        <li><strong>HeyGen:</strong> Create videos with AI avatars in minutes</li>
+        <li><strong>Synthesia:</strong> Professional AI presenters for any script</li>
+        <li><strong>Pictory AI:</strong> Turn long videos into viral shorts</li>
+        <li><strong>Runway ML:</strong> Advanced video editing with AI</li>
+        <li><strong>D-ID:</strong> Animate photos and create talking videos</li>
+      </ul>
+
+      <h3>Step-by-Step Process</h3>
+      <ul>
+        <li><strong>Step 1:</strong> Write or generate a script using ChatGPT</li>
+        <li><strong>Step 2:</strong> Choose an AI tool and platform</li>
+        <li><strong>Step 3:</strong> Create your avatar or upload images</li>
+        <li><strong>Step 4:</strong> Add voiceover (text-to-speech or record)</li>
+        <li><strong>Step 5:</strong> Select background music and effects</li>
+        <li><strong>Step 6:</strong> Generate video (usually 5-30 minutes)</li>
+        <li><strong>Step 7:</strong> Download and upload to YouTube</li>
+      </ul>
+
+      <h3>Cost Breakdown</h3>
+      <ul>
+        <li>HeyGen: Free tier + $48/month pro</li>
+        <li>Synthesia: Free trial + $22/month starter</li>
+        <li>Pictory: Free + $25/month basic</li>
+        <li>Average setup: Rs.2000-5000/month</li>
+      </ul>
+
+      <h3>Pro Tips</h3>
+      <ul>
+        <li>Use multiple AI tools for variety</li>
+        <li>Combine AI videos with real footage for authenticity</li>
+        <li>Keep videos under 10 minutes for engagement</li>
+        <li>Add subtitles even though there's voiceover</li>
+        <li>Test different avatars for your audience</li>
+        <li>Maintain consistency in style and format</li>
+      </ul>
+
+      <h3>Income Potential</h3>
+      <ul>
+        <li>1 video/week = 52 videos/year</li>
+        <li>Each video gets 1000+ views = Rs.150-500</li>
+        <li>Monthly income: Rs.5,000-20,000</li>
+        <li>Scalable to multiple channels</li>
+      </ul>
+    `
+  },
+  'script-writing': {
+    title: '✍️ Script Writing - Become a Master',
+    content: `
+      <h3>The Art of Script Writing</h3>
+      <p>A great script is the foundation of viral content. Learn how to write scripts that engage viewers and keep them watching until the end.</p>
+
+      <h3>Script Writing Framework (PROBLEM - AGITATE - SOLVE)</h3>
+      <ul>
+        <li><strong>PROBLEM (0-10 seconds):</strong> Identify viewer's pain point</li>
+        <li><strong>AGITATE (10-30 seconds):</strong> Make problem feel urgent/serious</li>
+        <li><strong>SOLVE (30-90% of video):</strong> Provide step-by-step solution</li>
+        <li><strong>CTA (Last 10 seconds):</strong> Tell what to do next</li>
+      </ul>
+
+      <h3>Power Words That Work</h3>
+      <ul>
+        <li>🚀 Secrets, Revealed, Hacks, Tricks</li>
+        <li>⚡ Shocking, Surprising, Unbelievable</li>
+        <li>💰 Easy, Quick, Simple, Proven</li>
+        <li>🔥 Amazing, Incredible, Life-changing</li>
+        <li>📊 Data-driven, Statistics, Numbers</li>
+      </ul>
+
+      <h3>Hook Examples (First 3 Seconds)</h3>
+      <ul>
+        <li>"Most people think X, but Y is actually true..."</li>
+        <li>"I made Rs.50,000 in 30 days doing this..."</li>
+        <li>"Scientists just discovered that..."</li>
+        <li>"This 5-minute trick will change your life..."</li>
+        <li>"99% of people don't know this secret..."</li>
+      </ul>
+
+      <h3>Script Length Guidelines</h3>
+      <ul>
+        <li><strong>YouTube Shorts:</strong> 30-60 seconds (100-150 words)</li>
+        <li><strong>Regular Video:</strong> 8-15 minutes (1800-2500 words)</li>
+        <li><strong>Long-form:</strong> 20+ minutes (3500+ words)</li>
+        <li><strong>Speaking pace:</strong> 130-150 words per minute</li>
+      </ul>
+
+      <h3>AI Tools for Script Writing</h3>
+      <ul>
+        <li><strong>ChatGPT:</strong> Generate ideas and full scripts</li>
+        <li><strong>Jasper AI:</strong> Specialized for video content</li>
+        <li><strong>Copy.ai:</strong> Quick script generation</li>
+        <li><strong>Claude:</strong> More creative variations</li>
+      </ul>
+
+      <h3>Script Template You Can Use</h3>
+      <ul>
+        <li>HOOK: [Attention-grabbing statement]</li>
+        <li>INTRO: [Who am I & what will you learn]</li>
+        <li>BODY: [Main content - break into 3-5 points]</li>
+        <li>PROOF: [Examples or case studies]</li>
+        <li>CTA: [Subscribe, Like, Share]</li>
+      </ul>
+
+      <h3>Tips for Better Scripts</h3>
+      <ul>
+        <li>Write conversationally, not formally</li>
+        <li>Use short sentences (8-10 words max)</li>
+        <li>Include numbers and statistics</li>
+        <li>Ask rhetorical questions to engage</li>
+        <li>Use analogies to explain complex ideas</li>
+        <li>End each point with a "why it matters"</li>
+      </ul>
+    `
+  },
+  'viral-topics': {
+    title: '🔥 Finding Viral Topics - The Secret Sauce',
+    content: `
+      <h3>What Makes Topics Go Viral?</h3>
+      <p>Viral content taps into emotions (curiosity, shock, anger, joy). Learn to identify trending topics before they peak and create content around them.</p>
+
+      <h3>Why These Topics Go Viral</h3>
+      <ul>
+        <li>💰 <strong>Money/Finance:</strong> People want to earn more</li>
+        <li>❤️ <strong>Relationships:</strong> Love and human connection</li>
+        <li>😱 <strong>Shocking:</strong> Unexpected/controversial</li>
+        <li>🎯 <strong>Self-improvement:</strong> Better version of themselves</li>
+        <li>🔬 <strong>Science:</strong> New discoveries and facts</li>
+        <li>🎮 <strong>Entertainment:</strong> Fun and laughs</li>
+      </ul>
+
+      <h3>Tools to Find Trending Topics</h3>
+      <ul>
+        <li><strong>Google Trends:</strong> Free - search volume trends</li>
+        <li><strong>YouTube Autocomplete:</strong> What people search for</li>
+        <li><strong>TikTok Discover:</strong> Trending sounds and hashtags</li>
+        <li><strong>Twitter Trending:</strong> What people tweet about</li>
+        <li><strong>Reddit:</strong> Real questions from real people</li>
+        <li><strong>Quora:</strong> Common questions in any niche</li>
+      </ul>
+
+      <h3>Viral Topic Categories</h3>
+      <ul>
+        <li><strong>List Videos:</strong> "5 Ways to...", "10 Hacks..."</li>
+        <li><strong>How-to Videos:</strong> "How to Make X in Y Minutes"</li>
+        <li><strong>Myths Busted:</strong> "People Think X But Y is True"</li>
+        <li><strong>Comparison:</strong> "X vs Y - Which is Better?"</li>
+        <li><strong>Challenges:</strong> Trending challenges (easy copies)</li>
+        <li><strong>Reactions:</strong> React to viral videos/news</li>
+      </ul>
+
+      <h3>How to Research Viral Topics</h3>
+      <ul>
+        <li><strong>Step 1:</strong> Pick your niche (finance, tech, health)</li>
+        <li><strong>Step 2:</strong> Check Google Trends for keywords</li>
+        <li><strong>Step 3:</strong> Look at top videos on YouTube</li>
+        <li><strong>Step 4:</strong> Check view count and upload date</li>
+        <li><strong>Step 5:</strong> Look for patterns in titles/thumbnails</li>
+        <li><strong>Step 6:</strong> Create better version with unique angle</li>
+      </ul>
+
+      <h3>Red-Hot Topics RIGHT NOW (These Always Trend)</h3>
+      <ul>
+        <li>💶 How to make money online</li>
+        <li>⚙️ AI tools and automation</li>
+        <li>💪 Weight loss and fitness hacks</li>
+        <li>🧠 Personal development and habits</li>
+        <li>🏠 Real estate and property</li>
+        <li>📱 New technology and gadgets</li>
+      </ul>
+
+      <h3>Seasonal Trending Topics</h3>
+      <ul>
+        <li><strong>January:</strong> New Year resolutions, fitness</li>
+        <li><strong>April:</strong> Summer body, vacation planning</li>
+        <li><strong>September:</strong> New school year, productivity</li>
+        <li><strong>November-December:</strong> Gift guides, year-end reviews</li>
+      </ul>
+
+      <h3>Pro Strategy: Create Content Before Peak</h3>
+      <ul>
+        <li>Trend emerges on TikTok/Twitter first</li>
+        <li>Gets big on YouTube 1-2 weeks later</li>
+        <li>Reaches max views 3-4 weeks in</li>
+        <li>Action: Create content in WEEK 1</li>
+        <li>Your video will rank high in results</li>
+      </ul>
+
+      <h3>Evergreen + Trending Mix (Best Strategy)</h3>
+      <ul>
+        <li>60% Evergreen (timeless content)</li>
+        <li>40% Trending (current topics)</li>
+        <li>Balance = Consistent growth + viral spikes</li>
+      </ul>
+    `
+  }
+};
+
+// Initialize PDF Buttons
+function initPdfButtons() {
+  const pdfButtonsGrid = document.getElementById('pdfButtonsGrid');
+  pdfButtonsGrid.innerHTML = '';
+  
+  for (const [key, data] of Object.entries(guideContent)) {
+    const button = document.createElement('button');
+    button.className = 'pdf-detail-btn';
+    button.textContent = data.title;
+    button.onclick = () => showDetail(key);
+    pdfButtonsGrid.appendChild(button);
+  }
 }
 
-function closeModal(){
-document.getElementById("workshopModal").style.display="none";
+// Show Detail Modal
+function showDetail(key) {
+  const data = guideContent[key];
+  document.getElementById('detailTitle').textContent = data.title;
+  document.getElementById('detailContent').innerHTML = data.content;
+  document.getElementById('detailModal').style.display = 'flex';
+  document.getElementById('pdfModal').style.display = 'none';
 }
 
-function closePaymentModal(){
-document.getElementById("paymentModal").style.display="none";
+// Close Detail Modal
+function closeDetailModal() {
+  document.getElementById('detailModal').style.display = 'none';
+  document.getElementById('pdfModal').style.display = 'flex';
 }
 
-/* FORM SUBMIT */
+// Learn Modal Functions
+function openLearnModal(key) {
+  const data = learnContent[key];
+  if(data) {
+    document.getElementById('learnTitle').textContent = data.title;
+    document.getElementById('learnContent').innerHTML = data.content;
+    document.getElementById('learnModal').style.display = 'flex';
+  }
+}
 
-document.getElementById("workshopForm").addEventListener("submit", function(e){
+function closeLearnModal() {
+  document.getElementById('learnModal').style.display = 'none';
+}
 
-e.preventDefault();
+function openPdfModal(){
+  initPdfButtons();
+  document.getElementById("pdfModal").style.display = "flex";
+}
 
-fetch("https://formsubmit.co/ajax/mianirtazatahir@gmail.com",{
-method:"POST",
-headers:{
-'Content-Type':'application/json',
-'Accept':'application/json'
-},
-body:JSON.stringify({
-name:this.name.value,
-email:this.email.value,
-phone:this.phone.value
-})
-})
-.then(response => response.json())
-.then(data => {
+function closePdfModal(){
+  document.getElementById("pdfModal").style.display = "none";
+}
 
-closeModal();
+function openNichesModal(){
+  document.getElementById("nichesModal").style.display = "flex";
+}
 
-document.getElementById("paymentModal").style.display="flex";
+function closeNichesModal(){
+  document.getElementById("nichesModal").style.display = "none";
+}
 
+function openCourseModal(){
+  document.getElementById("courseModal").style.display = "flex";
+}
+
+function closeCourseModal(){
+  document.getElementById("courseModal").style.display = "none";
+}
+
+function closeCoursePaymentModal(){
+  document.getElementById("coursePaymentModal").style.display = "none";
+}
+
+function openModal(){document.getElementById("workshopModal").style.display="flex";}
+function closeModal(){document.getElementById("workshopModal").style.display="none";}
+function closePaymentModal(){document.getElementById("paymentModal").style.display="none";}
+
+// Workshop Form Submission
+document.getElementById("workshopForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  fetch("https://formsubmit.co/ajax/mianirtazatahir@gmail.com",{
+    method:"POST",
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({name:this.name.value,email:this.email.value,phone:this.phone.value})
+  }).then(r=>r.json()).then(d=>{closeModal();document.getElementById("paymentModal").style.display="flex";});
 });
 
+// Course Form Submission
+document.getElementById("courseForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  fetch("https://formsubmit.co/ajax/mianirtazatahir@gmail.com",{
+    method:"POST",
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({name:this.name.value,email:this.email.value,phone:this.phone.value})
+  }).then(r=>r.json()).then(d=>{closeCourseModal();document.getElementById("coursePaymentModal").style.display="flex";});
 });
 
 window.onclick=function(e){
-
-const workshopModal=document.getElementById("workshopModal");
-const paymentModal=document.getElementById("paymentModal");
-
-if(e.target==workshopModal){
-workshopModal.style.display="none";
+  const pdf=document.getElementById("pdfModal");
+  const detail=document.getElementById("detailModal");
+  const learn=document.getElementById("learnModal");
+  const niches=document.getElementById("nichesModal");
+  const w=document.getElementById("workshopModal");
+  const pay=document.getElementById("paymentModal");
+  const course=document.getElementById("courseModal");
+  const coursePay=document.getElementById("coursePaymentModal");
+  if(e.target==pdf)closePdfModal();
+  if(e.target==detail)closeDetailModal();
+  if(e.target==learn)closeLearnModal();
+  if(e.target==niches)closeNichesModal();
+  if(e.target==w)w.style.display="none";
+  if(e.target==pay)pay.style.display="none";
+  if(e.target==course)closeCourseModal();
+  if(e.target==coursePay)closeCoursePaymentModal();
 }
-
-if(e.target==paymentModal){
-paymentModal.style.display="none";
-}
-
-}
-
 </script>
-
 </body>
 </html>
-```
