@@ -19,7 +19,7 @@ body{font-family:'Poppins',sans-serif;background:#000000;color:white;overflow-x:
   height: 100%;
   z-index: -1;
   overflow: hidden;
-  background: linear-gradient(135deg, #000000 0%, #0a0a1a 50%, #000000 100%);
+  background: linear-gradient(135deg, #000000 0%, #0d0005 50%, #000000 100%);
 }
 
 /* Floating Orbs */
@@ -34,7 +34,7 @@ body{font-family:'Poppins',sans-serif;background:#000000;color:white;overflow-x:
 .orb1 {
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, #5db8ff, transparent);
+  background: radial-gradient(circle, #8b0036, transparent);
   top: 10%;
   left: 10%;
   animation-delay: 0s;
@@ -43,7 +43,7 @@ body{font-family:'Poppins',sans-serif;background:#000000;color:white;overflow-x:
 .orb2 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, #3fa8ff, transparent);
+  background: radial-gradient(circle, #6d0028, transparent);
   top: 60%;
   right: 10%;
   animation-delay: 5s;
@@ -52,7 +52,7 @@ body{font-family:'Poppins',sans-serif;background:#000000;color:white;overflow-x:
 .orb3 {
   width: 250px;
   height: 250px;
-  background: radial-gradient(circle, #7dc8ff, transparent);
+  background: radial-gradient(circle, #a8004a, transparent);
   bottom: 20%;
   left: 50%;
   animation-delay: 10s;
@@ -81,8 +81,8 @@ body{font-family:'Poppins',sans-serif;background:#000000;color:white;overflow-x:
   top: -50%;
   left: -50%;
   background-image: 
-    linear-gradient(rgba(93, 184, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(93, 184, 255, 0.1) 1px, transparent 1px);
+    linear-gradient(rgba(139, 0, 54, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 0, 54, 0.15) 1px, transparent 1px);
   background-size: 50px 50px;
   transform: rotateX(60deg) translateZ(-100px);
   animation: gridMove 20s linear infinite;
@@ -112,7 +112,7 @@ body{font-family:'Poppins',sans-serif;background:#000000;color:white;overflow-x:
   height: 0;
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
-  border-bottom: 86px solid #5db8ff;
+  border-bottom: 86px solid #8b0036;
   top: 20%;
   left: 80%;
   animation-delay: 0s;
@@ -121,8 +121,8 @@ body{font-family:'Poppins',sans-serif;background:#000000;color:white;overflow-x:
 .square {
   width: 80px;
   height: 80px;
-  background: rgba(93, 184, 255, 0.3);
-  border: 2px solid #5db8ff;
+  background: rgba(139, 0, 54, 0.3);
+  border: 2px solid #8b0036;
   top: 70%;
   left: 15%;
   animation-delay: 3s;
@@ -132,8 +132,8 @@ body{font-family:'Poppins',sans-serif;background:#000000;color:white;overflow-x:
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  border: 3px solid #5db8ff;
-  background: rgba(93, 184, 255, 0.1);
+  border: 3px solid #8b0036;
+  background: rgba(139, 0, 54, 0.1);
   top: 40%;
   right: 20%;
   animation-delay: 6s;
@@ -156,9 +156,9 @@ body{font-family:'Poppins',sans-serif;background:#000000;color:white;overflow-x:
   position: absolute;
   width: 2px;
   height: 2px;
-  background: #5db8ff;
+  background: #c0003f;
   border-radius: 50%;
-  box-shadow: 0 0 10px #5db8ff;
+  box-shadow: 0 0 10px #c0003f;
   animation: twinkle 3s infinite ease-in-out;
 }
 
@@ -182,7 +182,7 @@ body{font-family:'Poppins',sans-serif;background:#000000;color:white;overflow-x:
   bottom: 0;
   width: 200%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, #5db8ff, transparent);
+  background: linear-gradient(90deg, transparent, #8b0036, transparent);
   animation: wave 10s linear infinite;
 }
 
@@ -211,7 +211,7 @@ body{font-family:'Poppins',sans-serif;background:#000000;color:white;overflow-x:
 .line {
   position: absolute;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #5db8ff, transparent);
+  background: linear-gradient(90deg, transparent, #8b0036, transparent);
   animation: lineMove 8s linear infinite;
 }
 
@@ -255,60 +255,21 @@ body{font-family:'Poppins',sans-serif;background:#000000;color:white;overflow-x:
   font-size: 50px;
   opacity: 0.15;
   animation: floatLogo 15s infinite ease-in-out;
-  filter: drop-shadow(0 0 10px rgba(93, 184, 255, 0.3));
+  filter: drop-shadow(0 0 10px rgba(139, 0, 54, 0.3));
 }
 
 .logo-item:hover {
   opacity: 0.3;
 }
 
-.logo-youtube {
-  top: 15%;
-  left: 5%;
-  animation-delay: 0s;
-}
-
-.logo-chatgpt {
-  top: 25%;
-  right: 8%;
-  animation-delay: 2s;
-}
-
-.logo-google {
-  top: 50%;
-  left: 10%;
-  animation-delay: 4s;
-}
-
-.logo-claude {
-  top: 60%;
-  right: 15%;
-  animation-delay: 6s;
-}
-
-.logo-ai {
-  bottom: 20%;
-  left: 25%;
-  animation-delay: 8s;
-}
-
-.logo-code {
-  bottom: 30%;
-  right: 20%;
-  animation-delay: 10s;
-}
-
-.logo-tech {
-  top: 35%;
-  right: 5%;
-  animation-delay: 12s;
-}
-
-.logo-brain {
-  top: 70%;
-  left: 70%;
-  animation-delay: 14s;
-}
+.logo-youtube { top: 15%; left: 5%; animation-delay: 0s; }
+.logo-chatgpt { top: 25%; right: 8%; animation-delay: 2s; }
+.logo-google  { top: 50%; left: 10%; animation-delay: 4s; }
+.logo-claude  { top: 60%; right: 15%; animation-delay: 6s; }
+.logo-ai      { bottom: 20%; left: 25%; animation-delay: 8s; }
+.logo-code    { bottom: 30%; right: 20%; animation-delay: 10s; }
+.logo-tech    { top: 35%; right: 5%; animation-delay: 12s; }
+.logo-brain   { top: 70%; left: 70%; animation-delay: 14s; }
 
 @keyframes floatLogo {
   0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
@@ -328,13 +289,13 @@ nav{
   position:sticky;
   top:0;
   z-index:999;
-  border-bottom:2px solid #5db8ff;
+  border-bottom:2px solid #8b0036;
 }
 
 .logo{
   font-size:18px;
   font-weight:700;
-  color:#5db8ff;
+  color:#c0003f;
   letter-spacing:1px;
 }
 
@@ -348,7 +309,7 @@ nav ul li a{
   transition:0.3s;
   font-weight:500;
 }
-nav ul li a:hover{background:#5db8ff;box-shadow:0 0 20px rgba(93,184,255,0.5);}
+nav ul li a:hover{background:#8b0036;box-shadow:0 0 20px rgba(139,0,54,0.5);}
 
 /* HERO */
 .hero{
@@ -368,7 +329,7 @@ nav ul li a:hover{background:#5db8ff;box-shadow:0 0 20px rgba(93,184,255,0.5);}
   line-height:1.2;
   margin-bottom:20px;
   color:white;
-  text-shadow:0 0 40px rgba(93,184,255,0.3);
+  text-shadow:0 0 40px rgba(139,0,54,0.4);
   font-weight:800;
 }
 
@@ -398,7 +359,7 @@ nav ul li a:hover{background:#5db8ff;box-shadow:0 0 20px rgba(93,184,255,0.5);}
 
 .btn{
   padding:16px 35px;
-  background:#5db8ff;
+  background:#8b0036;
   color:white;
   text-decoration:none;
   border-radius:14px;
@@ -406,19 +367,19 @@ nav ul li a:hover{background:#5db8ff;box-shadow:0 0 20px rgba(93,184,255,0.5);}
   font-weight:600;
   transition:0.35s ease;
   display:inline-block;
-  box-shadow:0 0 20px rgba(93,184,255,0.5);
+  box-shadow:0 0 20px rgba(139,0,54,0.5);
   border:none;
   cursor:pointer;
 }
 
 .btn:hover{
   transform:translateY(-6px) scale(1.05);
-  box-shadow:0 0 35px rgba(93,184,255,0.8);
-  background:#3fa8ff;
+  box-shadow:0 0 35px rgba(139,0,54,0.8);
+  background:#a8004a;
 }
 
-.workshop-btn{background:#5db8ff;box-shadow:0 0 20px rgba(93,184,255,0.5);}
-.workshop-btn:hover{box-shadow:0 0 35px rgba(93,184,255,0.8);}
+.workshop-btn{background:#8b0036;box-shadow:0 0 20px rgba(139,0,54,0.5);}
+.workshop-btn:hover{box-shadow:0 0 35px rgba(139,0,54,0.8);}
 
 /* TRUST BADGES */
 .trust-section{
@@ -430,19 +391,19 @@ nav ul li a:hover{background:#5db8ff;box-shadow:0 0 20px rgba(93,184,255,0.5);}
 }
 
 .trust-badge{
-  background:rgba(93,184,255,0.1);
-  border:2px solid #5db8ff;
+  background:rgba(139,0,54,0.15);
+  border:2px solid #8b0036;
   padding:25px;
   border-radius:20px;
   width:280px;
   backdrop-filter:blur(10px);
   transition:0.3s;
-  box-shadow:0 0 20px rgba(93,184,255,0.2);
+  box-shadow:0 0 20px rgba(139,0,54,0.2);
 }
 
 .trust-badge:hover{
   transform:translateY(-10px);
-  box-shadow:0 0 35px rgba(93,184,255,0.5);
+  box-shadow:0 0 35px rgba(139,0,54,0.5);
 }
 
 .trust-badge span{
@@ -459,7 +420,7 @@ section h2{
   font-size:52px;
   margin-bottom:60px;
   text-align:center;
-  color:#5db8ff;
+  color:#c0003f;
 }
 
 /* CARDS */
@@ -472,18 +433,18 @@ section h2{
 
 .premium-card,.learn-box,.testimonial-card{
   width:330px;
-  background:rgba(93,184,255,0.1);
+  background:rgba(139,0,54,0.12);
   border-radius:20px;
   overflow:hidden;
   backdrop-filter:blur(10px);
   transition:0.4s;
-  box-shadow:0 0 20px rgba(93,184,255,0.3);
-  border:2px solid #5db8ff;
+  box-shadow:0 0 20px rgba(139,0,54,0.3);
+  border:2px solid #8b0036;
 }
 
 .premium-card:hover,.learn-box:hover,.testimonial-card:hover{
   transform:translateY(-10px);
-  box-shadow:0 0 35px rgba(93,184,255,0.6);
+  box-shadow:0 0 35px rgba(139,0,54,0.6);
 }
 
 .premium-card img,.learn-box img{
@@ -493,12 +454,12 @@ section h2{
 }
 
 .course-content,.learn-content{padding:25px;text-align:center;}
-.course-content h3{font-size:28px;margin-bottom:15px;color:#5db8ff;}
+.course-content h3{font-size:28px;margin-bottom:15px;color:#c0003f;}
 .learn-content{font-size:22px;font-weight:600;color:white;}
 .course-lessons{
   text-align:left;
   margin:20px 0;
-  background:rgba(93,184,255,0.05);
+  background:rgba(139,0,54,0.08);
   padding:15px;
   border-radius:10px;
   font-size:14px;
@@ -506,13 +467,13 @@ section h2{
 }
 
 .course-lessons li{margin-left:20px;color:#ffffff;}
-.course-lessons strong{color:#5db8ff;}
+.course-lessons strong{color:#c0003f;}
 
 .learn-btn,.enroll-btn{
   display:inline-block;
   margin-top:20px;
   padding:14px 28px;
-  background:#5db8ff;
+  background:#8b0036;
   color:white;
   text-decoration:none;
   border-radius:12px;
@@ -525,8 +486,8 @@ section h2{
 
 .learn-btn:hover,.enroll-btn:hover{
   transform:translateY(-3px);
-  box-shadow:0 0 20px rgba(93,184,255,0.6);
-  background:#3fa8ff;
+  box-shadow:0 0 20px rgba(139,0,54,0.6);
+  background:#a8004a;
 }
 
 /* TESTIMONIALS */
@@ -537,7 +498,7 @@ section h2{
   border-radius:50%;
   object-fit:cover;
   margin-bottom:15px;
-  border:3px solid #5db8ff;
+  border:3px solid #8b0036;
 }
 
 .review{line-height:1.7;color:#ffffff;}
@@ -546,10 +507,10 @@ section h2{
 .contact{text-align:center;}
 .contact p{font-size:22px;margin-bottom:35px;color:white;}
 .contact-buttons{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
-.community-btn{background:#5db8ff;}
-.community-btn:hover{background:#3fa8ff;}
-.insta-btn{background:#5db8ff;}
-.insta-btn:hover{background:#3fa8ff;}
+.community-btn{background:#8b0036;}
+.community-btn:hover{background:#a8004a;}
+.insta-btn{background:#8b0036;}
+.insta-btn:hover{background:#a8004a;}
 
 /* WHATSAPP FLOAT */
 .whatsapp-float{
@@ -558,7 +519,7 @@ section h2{
   right:20px;
   width:65px;
   height:65px;
-  background:#5db8ff;
+  background:#8b0036;
   border-radius:50%;
   display:flex;
   justify-content:center;
@@ -566,13 +527,13 @@ section h2{
   font-size:30px;
   text-decoration:none;
   z-index:9999;
-  box-shadow:0 0 20px rgba(93,184,255,0.5);
+  box-shadow:0 0 20px rgba(139,0,54,0.5);
   transition:0.3s;
 }
 
 .whatsapp-float:hover{
   transform:scale(1.1);
-  box-shadow:0 0 30px rgba(93,184,255,0.8);
+  box-shadow:0 0 30px rgba(139,0,54,0.8);
 }
 
 /* MODALS */
@@ -594,10 +555,10 @@ section h2{
   background:#000000;
   padding:35px;
   border-radius:20px;
-  box-shadow:0 0 30px rgba(93,184,255,0.4);
+  box-shadow:0 0 30px rgba(139,0,54,0.4);
   position:relative;
   animation:popup 0.4s ease;
-  border:2px solid #5db8ff;
+  border:2px solid #8b0036;
 }
 
 .pdf-modal-content{
@@ -607,13 +568,13 @@ section h2{
   background:#000000;
   padding:25px;
   border-radius:20px;
-  box-shadow:0 0 30px rgba(93,184,255,0.4);
+  box-shadow:0 0 30px rgba(139,0,54,0.4);
   position:relative;
   animation:popup 0.4s ease;
   display:flex;
   flex-direction:column;
   overflow-y:auto;
-  border:2px solid #5db8ff;
+  border:2px solid #8b0036;
 }
 
 .detail-modal-content{
@@ -622,12 +583,12 @@ section h2{
   background:#000000;
   padding:35px;
   border-radius:20px;
-  box-shadow:0 0 30px rgba(93,184,255,0.4);
+  box-shadow:0 0 30px rgba(139,0,54,0.4);
   position:relative;
   animation:popup 0.4s ease;
   max-height:85vh;
   overflow-y:auto;
-  border:2px solid #5db8ff;
+  border:2px solid #8b0036;
 }
 
 .learn-modal-content{
@@ -636,12 +597,12 @@ section h2{
   background:#000000;
   padding:35px;
   border-radius:20px;
-  box-shadow:0 0 30px rgba(93,184,255,0.4);
+  box-shadow:0 0 30px rgba(139,0,54,0.4);
   position:relative;
   animation:popup 0.4s ease;
   max-height:85vh;
   overflow-y:auto;
-  border:2px solid #5db8ff;
+  border:2px solid #8b0036;
 }
 
 @keyframes popup{from{opacity:0;transform:scale(0.8);}to{opacity:1;transform:scale(1);}}
@@ -649,7 +610,7 @@ section h2{
 .modal-content h2,.pdf-modal-content h2,.detail-modal-content h2,.learn-modal-content h2{
   text-align:center;
   margin-bottom:25px;
-  color:#5db8ff;
+  color:#c0003f;
 }
 
 .close-btn{
@@ -662,7 +623,7 @@ section h2{
   transition:0.3s;
 }
 
-.close-btn:hover{color:#5db8ff;}
+.close-btn:hover{color:#c0003f;}
 
 .input-box{margin-bottom:20px;}
 .input-box input{
@@ -674,18 +635,18 @@ section h2{
   background:#111111;
   color:white;
   font-size:16px;
-  border:2px solid #5db8ff;
+  border:2px solid #8b0036;
   transition:0.3s;
 }
 
-.input-box input:focus{box-shadow:0 0 15px rgba(93,184,255,0.4);}
+.input-box input:focus{box-shadow:0 0 15px rgba(139,0,54,0.4);}
 
 .submit-btn{
   width:100%;
   padding:15px;
   border:none;
   border-radius:12px;
-  background:#5db8ff;
+  background:#8b0036;
   color:white;
   font-size:18px;
   font-weight:600;
@@ -693,7 +654,7 @@ section h2{
   transition:0.3s;
 }
 
-.submit-btn:hover{background:#3fa8ff;box-shadow:0 0 20px rgba(93,184,255,0.5);}
+.submit-btn:hover{background:#a8004a;box-shadow:0 0 20px rgba(139,0,54,0.5);}
 
 .payment-box{
   background:#111111;
@@ -701,14 +662,14 @@ section h2{
   border-radius:15px;
   line-height:2;
   margin-bottom:25px;
-  border-left:4px solid #5db8ff;
+  border-left:4px solid #8b0036;
   color:white;
 }
 
 .pdf-buttons-grid{display:grid;grid-template-columns:1fr;gap:15px;margin-bottom:20px;}
 .pdf-detail-btn{
   padding:15px;
-  background:#5db8ff;
+  background:#8b0036;
   color:white;
   border:none;
   border-radius:12px;
@@ -720,8 +681,8 @@ section h2{
 
 .pdf-detail-btn:hover{
   transform:translateY(-3px);
-  box-shadow:0 0 20px rgba(93,184,255,0.6);
-  background:#3fa8ff;
+  box-shadow:0 0 20px rgba(139,0,54,0.6);
+  background:#a8004a;
 }
 
 .detail-content, .learn-content-box{
@@ -731,7 +692,7 @@ section h2{
 }
 
 .detail-content h3, .learn-content-box h3{
-  color:#5db8ff;
+  color:#c0003f;
   margin-top:20px;
   margin-bottom:15px;
   font-size:20px;
@@ -749,7 +710,7 @@ section h2{
 }
 
 .detail-content strong, .learn-content-box strong{
-  color:#5db8ff;
+  color:#c0003f;
   font-weight:600;
 }
 
@@ -757,7 +718,7 @@ footer{
   background:#000000;
   text-align:center;
   padding:25px;
-  border-top:2px solid #5db8ff;
+  border-top:2px solid #8b0036;
   color:white;
   position:relative;
 }
@@ -878,16 +839,16 @@ footer{
         <div class="course-lessons">
           <strong>📚 What You'll Learn:</strong>
           <ul>
-            <li>✅ YouTube Automation Basics</li>
-            <li>✅ Channel Setup & Optimization</li>
-            <li>✅ AI Video Creation Tools</li>
-            <li>✅ Script Writing Secrets</li>
-            <li>✅ SEO & Keyword Research</li>
-            <li>✅ Thumbnail Design Tips</li>
-            <li>✅ Video Editing Basics</li>
-            <li>✅ Monetization Strategy</li>
-            <li>✅ Grow Your Audience</li>
-            <li>✅ Passive Income Methods</li>
+            <li>✅ Niche Research</li>
+            <li>✅ Viral Script Writing</li>
+            <li>✅ Prompt Engineering</li>
+            <li>✅ AI Tools in Detail</li>
+            <li>✅ SEO Research</li>
+            <li>✅ Channel Creation</li>
+            <li>✅ Uploading to YouTube</li>
+            <li>✅ Viral Hook Strategy</li>
+            <li>✅ Human + AI Voice Over</li>
+            <li>✅ Viral Thumbnail Strategy</li>
           </ul>
         </div>
         <button class="enroll-btn" onclick="openCourseModal()">Enroll Now</button>
@@ -960,7 +921,7 @@ footer{
     <h2>📥 Free Guide – AI YouTube Automation</h2>
     <div class="pdf-buttons-grid" id="pdfButtonsGrid"></div>
     <div style="text-align:center;">
-      <button onclick="closePdfModal()" class="btn" style="background:rgba(93,184,255,0.2);margin-top:20px;">✖ Close</button>
+      <button onclick="closePdfModal()" class="btn" style="background:rgba(139,0,54,0.2);margin-top:20px;">✖ Close</button>
     </div>
   </div>
 </div>
@@ -1075,7 +1036,6 @@ const guideContent = {
     title: '✅ What is YouTube Automation?',
     content: `<h3>Understanding YouTube Automation</h3>
     <p>YouTube automation is the process of creating and publishing video content with minimal manual effort. It involves using AI tools, templates, and smart strategies to scale your YouTube presence without burning out.</p>
-    
     <h3>Key Benefits of Automation:</h3>
     <ul>
       <li><strong>Save 80% of Your Time:</strong> Automate script writing, video editing, thumbnail creation, and uploading</li>
@@ -1085,10 +1045,8 @@ const guideContent = {
       <li><strong>Quality Control:</strong> Use AI to maintain professional standards across all videos</li>
       <li><strong>Lower Costs:</strong> No need for expensive cameras, microphones, or studios</li>
     </ul>
-
     <h3>Why is YouTube Automation Popular?</h3>
-    <p>With the right tools and strategy, complete beginners can start a faceless YouTube channel that generates Rs.10,000-50,000+ monthly without showing their face, being on camera, or investing heavily in equipment. The key is understanding how to leverage AI effectively.</p>
-    
+    <p>With the right tools and strategy, complete beginners can start a faceless YouTube channel that generates Rs.10,000-50,000+ monthly without showing their face, being on camera, or investing heavily in equipment.</p>
     <h3>The Three Pillars of Automation:</h3>
     <ul>
       <li><strong>AI Content Creation:</strong> Using tools like ChatGPT for scripts and HeyGen for videos</li>
@@ -1096,268 +1054,77 @@ const guideContent = {
       <li><strong>System Building:</strong> Creating repeatable processes that run on autopilot</li>
     </ul>`
   },
-
   'setup-channel': {
     title: '✅ Setting Up Your YouTube Channel',
     content: `<h3>Complete Channel Setup Guide</h3>
-    
     <h3>Step 1: Create Professional Google Account</h3>
     <ul>
       <li>Go to google.com and click Create account</li>
-      <li>Use a professional email (avoid funny or numbers-only names)</li>
-      <li>Complete the verification process with phone number</li>
-      <li>Set up recovery email and phone for security</li>
+      <li>Use a professional email</li>
+      <li>Complete the verification process</li>
     </ul>
-
     <h3>Step 2: Create YouTube Channel</h3>
     <ul>
-      <li>Open youtube.com and sign in with your new Google account</li>
+      <li>Open youtube.com and sign in</li>
       <li>Click on your profile icon → Create a channel</li>
-      <li>Choose professional channel name related to your niche</li>
-      <li>Customize channel URL (makes it look professional)</li>
+      <li>Choose professional channel name</li>
     </ul>
-
     <h3>Step 3: Optimize Channel Design</h3>
     <ul>
-      <li><strong>Profile Picture:</strong> Use 800x800px professional logo (use Canva free)</li>
-      <li><strong>Channel Art:</strong> 2560x1440 pixels banner with your niche keywords</li>
-      <li><strong>Channel Description:</strong> Write 300-500 characters about your channel (include keywords)</li>
-      <li><strong>Featured Section:</strong> Highlight your best videos and playlists</li>
-    </ul>
-
-    <h3>Step 4: Configure Important Settings</h3>
-    <ul>
-      <li>Enable monetization eligibility in Settings</li>
-      <li>Set up upload schedule for consistent posting</li>
-      <li>Configure comment settings (filter spam)</li>
-      <li>Enable community tab once you hit 500 subscribers</li>
-      <li>Set up channel memberships for extra income</li>
-    </ul>
-
-    <h3>Step 5: Create First Playlist</h3>
-    <ul>
-      <li>Organize videos into playlists by category</li>
-      <li>Example: "Complete Tutorials," "Top Tips," "Quick Hacks"</li>
-      <li>Playlists increase watch time significantly</li>
+      <li><strong>Profile Picture:</strong> 800x800px professional logo</li>
+      <li><strong>Channel Art:</strong> 2560x1440 pixels banner</li>
+      <li><strong>Channel Description:</strong> 300-500 characters with keywords</li>
     </ul>`
   },
-
   'ai-video': {
     title: '✅ AI Video Creation Tools',
     content: `<h3>Complete Guide to AI Video Tools</h3>
-    
-    <h3>1. HeyGen (Best for Avatar Videos) - Recommended ⭐</h3>
+    <h3>1. HeyGen (Best for Avatar Videos) ⭐</h3>
     <ul>
       <li><strong>What It Does:</strong> Creates talking avatar videos from text scripts</li>
-      <li><strong>Features:</strong> 100+ professional avatars, multiple languages, voice options</li>
-      <li><strong>Price:</strong> Free tier (limited) + $48/month Pro + $168/month Business</li>
-      <li><strong>Time Saved:</strong> Creates 5-minute video in 5 minutes vs 2 hours manually</li>
-      <li><strong>Quality:</strong> Videos look professional and authentic</li>
+      <li><strong>Price:</strong> Free tier + $48/month Pro</li>
     </ul>
-
-    <h3>2. Synthesia (Professional AI Presenters)</h3>
+    <h3>2. Synthesia</h3>
     <ul>
-      <li><strong>Best For:</strong> Corporate videos, tutorials, explanations</li>
-      <li><strong>Languages:</strong> 30+ languages with native accents</li>
-      <li><strong>Avatars:</strong> Photorealistic human-like avatars</li>
+      <li><strong>Best For:</strong> Corporate videos, tutorials</li>
       <li><strong>Price:</strong> Free trial + $22/month Starter</li>
     </ul>
-
-    <h3>3. Pictory AI (Video Conversion Master)</h3>
+    <h3>3. Pictory AI</h3>
     <ul>
       <li><strong>Specializes In:</strong> Converting long videos to viral shorts</li>
-      <li><strong>Auto Features:</strong> Subtitle generation, scene detection, highlights</li>
-      <li><strong>Use Case:</strong> Turn 1 hour video into 10 x 1-minute viral clips</li>
-      <li><strong>Price:</strong> Free + $25/month Basic + $60/month Pro</li>
-    </ul>
-
-    <h3>4. Descript (AI Video Editor)</h3>
-    <ul>
-      <li><strong>Magic Feature:</strong> Edit video by editing transcript (like Word doc)</li>
-      <li><strong>Auto Remove Silence:</strong> Makes 30-min video into 8 min automatically</li>
-      <li><strong>Transcription:</strong> Free automatic subtitles included</li>
-      <li><strong>Price:</strong> Free limited + Premium plans</li>
-    </ul>
-
-    <h3>5. Invideo AI (Complete Video Generator)</h3>
-    <ul>
-      <li><strong>All-in-One:</strong> Script generation + Video creation + Editing</li>
-      <li><strong>Stock Content:</strong> 8 million stock videos/images included</li>
-      <li><strong>AI Voice:</strong> 100+ AI voices in multiple languages</li>
-      <li><strong>Speed:</strong> Create 5-minute video in 10 minutes</li>
-      <li><strong>Price:</strong> Freemium + $20/month</li>
-    </ul>
-
-    <h3>Recommended Workflow:</h3>
-    <ol>
-      <li>Generate script with ChatGPT (free)</li>
-      <li>Create video with HeyGen or Invideo (AI avatars)</li>
-      <li>Auto-generate subtitles with Descript</li>
-      <li>Create thumbnail with Canva (free)</li>
-      <li>Upload to YouTube with optimized title/description</li>
-    </ol>
-    
-    <h3>Monthly Budget (Starting):</h3>
-    <ul>
-      <li>Free tools: Rs.0 (start here)</li>
-      <li>Basic setup: Rs.2000-3000 (HeyGen + Invideo basic)</li>
-      <li>Professional: Rs.5000+ (premium plans)</li>
+      <li><strong>Price:</strong> Free + $25/month Basic</li>
     </ul>`
   },
-
   'script-writing': {
     title: '✅ Script Writing Secrets',
     content: `<h3>Viral Script Writing Framework</h3>
-    
     <h3>The Proven Formula (P.A.S. Method):</h3>
     <ul>
-      <li><strong>P - PROBLEM (0-10 seconds):</strong> Identify viewer's pain point immediately</li>
-      <li><strong>A - AGITATE (10-30 seconds):</strong> Make the problem feel urgent and serious</li>
-      <li><strong>S - SOLVE (30-90% of video):</strong> Provide clear, step-by-step solution</li>
-      <li><strong>CTA (Last 10 seconds):</strong> Tell exactly what to do next (Subscribe/Like)</li>
+      <li><strong>P - PROBLEM (0-10 seconds):</strong> Identify viewer's pain point</li>
+      <li><strong>A - AGITATE (10-30 seconds):</strong> Make the problem feel urgent</li>
+      <li><strong>S - SOLVE (30-90% of video):</strong> Provide clear solution</li>
     </ul>
-
-    <h3>Hook Examples That Actually Work:</h3>
+    <h3>Hook Examples:</h3>
     <ul>
       <li>"Most people think X, but I discovered Y..."</li>
       <li>"I made Rs.50,000 in 30 days doing this..."</li>
       <li>"This 5-minute trick will change your life..."</li>
-      <li>"Scientists just discovered something shocking..."</li>
-      <li>"99% of people don't know this secret..."</li>
-      <li>"This illegal method actually works..."</li>
-    </ul>
-
-    <h3>Power Words That Increase Clicks:</h3>
-    <ul>
-      <li><strong>Curiosity:</strong> Secrets, Revealed, Hidden, Unknown, Surprising</li>
-      <li><strong>Urgency:</strong> NOW, FAST, LIMITED, ONLY, SHOCKING</li>
-      <li><strong>Emotion:</strong> Incredible, Amazing, Shocking, Unbelievable</li>
-      <li><strong>Value:</strong> Easy, Simple, Quick, Proven, Working</li>
-    </ul>
-
-    <h3>Script Structure Breakdown:</h3>
-    <ul>
-      <li><strong>Seconds 0-3:</strong> Hook - Stop them from scrolling</li>
-      <li><strong>Seconds 3-15:</strong> Problem - Why should they care?</li>
-      <li><strong>Seconds 15-25:</strong> Solution starts - First benefit revealed</li>
-      <li><strong>Seconds 25-75%:</strong> Main content - Detailed steps/information</li>
-      <li><strong>Last 10 seconds:</strong> CTA - What to do next</li>
-    </ul>
-
-    <h3>AI Tools for Script Writing:</h3>
-    <ul>
-      <li><strong>ChatGPT:</strong> Generate full scripts in seconds (free)</li>
-      <li><strong>Jasper AI:</strong> Specialized for video scripts (paid)</li>
-      <li><strong>Copy.ai:</strong> Quick idea generation (freemium)</li>
-      <li><strong>Claude:</strong> More creative variations (free)</li>
-    </ul>
-
-    <h3>ChatGPT Prompt Template:</h3>
-    <p>"Write a 500-word YouTube script about [TOPIC] that starts with a hook about [HOOK], explains the problem, and provides 3 solutions. Use simple language and include 5 power words."</p>
-
-    <h3>Script Length Guidelines:</h3>
-    <ul>
-      <li><strong>YouTube Shorts:</strong> 30-60 seconds = 100-150 words</li>
-      <li><strong>Regular Videos:</strong> 8-15 minutes = 1800-2500 words</li>
-      <li><strong>Long-form Content:</strong> 20+ minutes = 3500+ words</li>
-      <li><strong>Speaking Pace:</strong> 130-150 words per minute (natural speed)</li>
-    </ul>
-
-    <h3>Pro Tips:</h3>
-    <ul>
-      <li>Write like you speak (conversational, not formal)</li>
-      <li>Use short sentences (8-10 words max)</li>
-      <li>Include statistics and real numbers</li>
-      <li>Tell personal stories (people connect with stories)</li>
-      <li>End each point with "why it matters"</li>
-      <li>Always include a clear call-to-action</li>
     </ul>`
   },
-
   'viral-topics': {
     title: '✅ Finding Viral Topics',
     content: `<h3>The Complete Guide to Viral Content</h3>
-    
-    <h3>What Actually Makes Content Go Viral?</h3>
+    <h3>What Makes Content Go Viral?</h3>
     <ul>
-      <li><strong>💰 Money/Finance:</strong> People always want to earn more or save money</li>
-      <li><strong>❤️ Relationships:</strong> Love, dating, marriage, family topics</li>
-      <li><strong>😱 Shocking:</strong> Unexpected, controversial, surprising facts</li>
+      <li><strong>💰 Money/Finance:</strong> People always want to earn more</li>
+      <li><strong>😱 Shocking:</strong> Unexpected, surprising facts</li>
       <li><strong>🎯 Self-Improvement:</strong> Becoming better at something</li>
-      <li><strong>🔬 Science:</strong> New discoveries, mind-blowing facts</li>
-      <li><strong>🎮 Entertainment:</strong> Fun, trending games, challenges</li>
     </ul>
-
-    <h3>Tools to Find Trending Topics (BEST):</h3>
+    <h3>Tools to Find Trending Topics:</h3>
     <ul>
-      <li><strong>Google Trends:</strong> See what's trending globally (free, best)</li>
-      <li><strong>YouTube Search Bar:</strong> Autocomplete shows what people search for</li>
-      <li><strong>TikTok Discover:</strong> See trending sounds, hashtags, challenges</li>
-      <li><strong>Twitter Trending:</strong> #1 source for current conversations</li>
-      <li><strong>Reddit:</strong> Find real questions people ask (gold for niches)</li>
-      <li><strong>Quora:</strong> See frequently asked questions in your niche</li>
-    </ul>
-
-    <h3>Viral Topic Categories That Always Work:</h3>
-    <ul>
-      <li><strong>List Videos:</strong> "5 Ways to...", "10 Hacks...", "7 Secrets..."</li>
-      <li><strong>How-to Videos:</strong> "How to Make X in Y Minutes"</li>
-      <li><strong>Myths Busted:</strong> "People Think X But Y is Actually True"</li>
-      <li><strong>Comparison:</strong> "X vs Y - Which is Better?"</li>
-      <li><strong>Challenges:</strong> Jump on trending challenges before they peak</li>
-      <li><strong>Reactions:</strong> React to viral news/videos with your unique take</li>
-    </ul>
-
-    <h3>How to Research Viral Topics (Step-by-Step):</h3>
-    <ul>
-      <li><strong>Step 1:</strong> Pick your niche (finance, tech, health, etc)</li>
-      <li><strong>Step 2:</strong> Check Google Trends for rising keywords</li>
-      <li><strong>Step 3:</strong> Look at top 3 videos on YouTube on that topic</li>
-      <li><strong>Step 4:</strong> Check view count, upload date, comments</li>
-      <li><strong>Step 5:</strong> Look for patterns in titles and thumbnails</li>
-      <li><strong>Step 6:</strong> Create BETTER version with unique angle</li>
-    </ul>
-
-    <h3>🔥 Red-Hot Topics RIGHT NOW (Always Trending):</h3>
-    <ul>
-      <li>💶 How to make money online</li>
-      <li>⚙️ New AI tools and automation tricks</li>
-      <li>💪 Weight loss and fitness hacks</li>
-      <li>🧠 Personal development and habits</li>
-      <li>🏠 Real estate tips and investing</li>
-      <li>📱 New technology and gadgets</li>
-    </ul>
-
-    <h3>Seasonal Trending Topics:</h3>
-    <ul>
-      <li><strong>January:</strong> New Year resolutions, fitness, motivation</li>
-      <li><strong>April-May:</strong> Summer body, vacation planning, fashion</li>
-      <li><strong>September:</strong> New school year, productivity, time management</li>
-      <li><strong>November-December:</strong> Gift guides, year-end reviews, sales</li>
-    </ul>
-
-    <h3>Pro Strategy: Create Content BEFORE Peak</h3>
-    <ul>
-      <li>Trend emerges on TikTok/Twitter first</li>
-      <li>Gets big on YouTube 1-2 weeks later</li>
-      <li>Reaches maximum views 3-4 weeks in</li>
-      <li>Smart move: CREATE content in WEEK 1</li>
-      <li>Your video will rank in top 3 results automatically</li>
-    </ul>
-
-    <h3>The Perfect Content Mix (Why Consistency Works):</h3>
-    <ul>
-      <li>60% Evergreen content (timeless, searchable)</li>
-      <li>40% Trending content (viral, current topics)</li>
-      <li>Result: Consistent growth + viral spikes</li>
-    </ul>
-
-    <h3>Don'ts (What Kills Your Channel):</h3>
-    <ul>
-      <li>❌ Don't follow trends that don't match your niche</li>
-      <li>❌ Don't create clickbait with false information</li>
-      <li>❌ Don't copy popular videos exactly (add your unique angle)</li>
-      <li>❌ Don't upload random topics (stay consistent)</li>
+      <li><strong>Google Trends:</strong> See what's trending globally (free)</li>
+      <li><strong>YouTube Search Bar:</strong> Autocomplete shows what people search</li>
+      <li><strong>TikTok Discover:</strong> Trending sounds and hashtags</li>
     </ul>`
   }
 };
@@ -1366,8 +1133,7 @@ const learnContent = {
   'ai-video': {
     title: '🎬 AI Video Making - Complete Guide',
     content: `<h3>Master AI Video Creation From Scratch</h3>
-    <p>No cameras, no filming experience needed. Just AI tools and your computer. Learn to create professional-looking videos in minutes.</p>
-    
+    <p>No cameras, no filming experience needed. Just AI tools and your computer.</p>
     <h3>Why AI Video Making is the Future:</h3>
     <ul>
       <li>❌ Traditional method: 8 hours to create 1 video</li>
@@ -1375,195 +1141,46 @@ const learnContent = {
       <li>❌ Traditional cost: $500+ equipment</li>
       <li>✅ AI cost: $0-50/month</li>
     </ul>
-
     <h3>Complete AI Video Creation Process:</h3>
     <ul>
-      <li><strong>Step 1:</strong> Write script (use ChatGPT - 5 minutes)</li>
-      <li><strong>Step 2:</strong> Choose AI platform (HeyGen/Invideo - 2 minutes)</li>
-      <li><strong>Step 3:</strong> Create avatar or upload images (3 minutes)</li>
-      <li><strong>Step 4:</strong> Add text-to-speech voiceover (2 minutes)</li>
-      <li><strong>Step 5:</strong> Select background music (2 minutes)</li>
-      <li><strong>Step 6:</strong> Generate video (10 minutes processing)</li>
-      <li><strong>Step 7:</strong> Download and optimize (2 minutes)</li>
-      <li><strong>Step 8:</strong> Upload to YouTube (2 minutes)</li>
-    </ul>
-
-    <h3>Best Free & Paid AI Video Tools:</h3>
-    <ul>
-      <li><strong>HeyGen:</strong> Avatars, best quality, most popular (Free + $48/mo)</li>
-      <li><strong>Synthesia:</strong> Photorealistic avatars ($22/mo)</li>
-      <li><strong>Pictory AI:</strong> Video conversion master ($25/mo)</li>
-      <li><strong>Runway ML:</strong> Advanced editing ($12/mo)</li>
-      <li><strong>D-ID:</strong> Animate photos ($60/mo)</li>
-    </ul>
-
-    <h3>Avatar vs Real Face: Which Earns More?</h3>
-    <ul>
-      <li>Avatars: Consistent, professional, no privacy issues</li>
-      <li>Real face: More trust, higher engagement, personal connection</li>
-      <li>Hybrid approach: Use avatars for tutorials, yourself for personal stories</li>
-    </ul>
-
-    <h3>Realistic Income Timeline:</h3>
-    <ul>
-      <li>Month 1: Learn + create 4 videos (0 income)</li>
-      <li>Month 2-3: Upload 8-12 videos (Rs.100-500)</li>
-      <li>Month 4-6: Reach 1000 subs (Rs.500-2000)</li>
-      <li>Month 7-12: Build to 10k subs (Rs.5000-20000/month)</li>
-    </ul>
-
-    <h3>Video Quality Expectations:</h3>
-    <ul>
-      <li>AI avatars look professional from day 1</li>
-      <li>No need for makeup, lighting, or perfect appearance</li>
-      <li>Can create videos 24/7 without fatigue</li>
-      <li>Same quality every single video</li>
+      <li><strong>Step 1:</strong> Write script with ChatGPT (5 min)</li>
+      <li><strong>Step 2:</strong> Choose AI platform HeyGen/Invideo (2 min)</li>
+      <li><strong>Step 3:</strong> Generate video (10 min)</li>
+      <li><strong>Step 4:</strong> Upload to YouTube (2 min)</li>
     </ul>`
   },
-
   'script-writing': {
     title: '✍️ Script Writing - Master Content Creation',
     content: `<h3>The Complete Script Writing Masterclass</h3>
-    <p>A great script is the foundation of all viral content. Learn the exact framework used by top creators earning millions.</p>
-
+    <p>A great script is the foundation of all viral content.</p>
     <h3>The Ultimate Script Formula (P.A.S.):</h3>
     <ul>
-      <li><strong>PROBLEM (Seconds 0-10):</strong> What problem does viewer have?</li>
-      <li><strong>AGITATE (Seconds 10-30):</strong> Why is this problem serious?</li>
-      <li><strong>SOLVE (Seconds 30-end):</strong> Here's exactly how to fix it</li>
+      <li><strong>PROBLEM (0-10s):</strong> What problem does viewer have?</li>
+      <li><strong>AGITATE (10-30s):</strong> Why is this problem serious?</li>
+      <li><strong>SOLVE (30s-end):</strong> Here's exactly how to fix it</li>
     </ul>
-
-    <h3>Proven Hook Formulas That Convert:</h3>
+    <h3>Hook Formulas That Convert:</h3>
     <ul>
       <li>"Did you know..." - Triggers curiosity</li>
       <li>"Most people think X, but..." - Contrasts expectations</li>
       <li>"I discovered a secret..." - Creates FOMO</li>
-      <li>"This illegal method..." - Creates shock</li>
-      <li>"Scientists found..." - Builds credibility</li>
-    </ul>
-
-    <h3>Power Words That Increase CTR:</h3>
-    <ul>
-      <li><strong>Curiosity:</strong> Secret, Hidden, Revealed, Unknown</li>
-      <li><strong>Urgency:</strong> NOW, ONLY, LIMITED, FAST</li>
-      <li><strong>Emotion:</strong> Amazing, Shocking, Incredible, Unbelievable</li>
-      <li><strong>Value:</strong> Easy, Simple, Quick, Proven, FREE</li>
-    </ul>
-
-    <h3>Professional Script Template (Copy & Use):</h3>
-    <p><strong>HOOK (3-5 seconds):</strong> "I'm about to share something 99% of people don't know..."</p>
-    <p><strong>PROBLEM (10 seconds):</strong> "Most people struggle with [problem] because they [wrong approach]."</p>
-    <p><strong>AGITATE (10 seconds):</strong> "And this costs them [money/time/opportunity] every single day."</p>
-    <p><strong>SOLUTION (Main content):</strong> "But here's the exact step-by-step method that works:"</p>
-    <p><strong>CTA (Last 10 seconds):</strong> "Drop a comment below, like this video, and subscribe for more..."</p>
-
-    <h3>How to Use AI for Scripts:</h3>
-    <ul>
-      <li><strong>ChatGPT Prompt:</strong> "Write a 500-word YouTube script about [topic] with a hook, problem, solution, and CTA."</li>
-      <li><strong>Time saved:</strong> 2 hours → 5 minutes</li>
-      <li><strong>Quality:</strong> Professional, ready to use</li>
-      <li><strong>Cost:</strong> FREE (if using free ChatGPT)</li>
-    </ul>
-
-    <h3>Script Writing Tips From Top Creators:</h3>
-    <ul>
-      <li>Write like you speak (use "I" statements)</li>
-      <li>Every sentence should serve a purpose</li>
-      <li>Include specific numbers (more believable)</li>
-      <li>Tell micro-stories within your script</li>
-      <li>Build curiosity loops (leave them wanting more)</li>
-      <li>Always have a clear ending message</li>
-    </ul>
-
-    <h3>Common Script Mistakes (Avoid These):</h3>
-    <ul>
-      <li>❌ Too formal/robotic (viewers disconnect)</li>
-      <li>❌ No clear problem/solution (confuses viewers)</li>
-      <li>❌ Weak CTA (low engagement/subscriptions)</li>
-      <li>❌ Too long intros (people leave)</li>
-      <li>❌ Same ending every time (boring)</li>
     </ul>`
   },
-
   'viral-topics': {
     title: '🔥 Viral Topics - Find What Works',
     content: `<h3>Complete Guide to Finding & Creating Viral Content</h3>
-    <p>Discover exactly what topics go viral, when to publish them, and how to create content that ranks immediately.</p>
-
     <h3>The 3 Types of Viral Content:</h3>
     <ul>
-      <li><strong>TREND HIJACKING:</strong> Jump on existing trends with your angle</li>
-      <li><strong>TIMELESS:</strong> Content that's always in demand (tutorials, tips)</li>
+      <li><strong>TREND HIJACKING:</strong> Jump on existing trends</li>
+      <li><strong>TIMELESS:</strong> Content always in demand</li>
       <li><strong>SEASONAL:</strong> Topics that peak at specific times</li>
     </ul>
-
-    <h3>The Viral Topics Framework:</h3>
-    <ul>
-      <li>💰 <strong>High Value Topics:</strong> Money, health, relationships, success</li>
-      <li>🔥 <strong>Emotional Topics:</strong> Shocking, surprising, inspiring</li>
-      <li>🎯 <strong>Problem-Solving:</strong> "How to fix this common problem"</li>
-      <li>📊 <strong>Data-Driven:</strong> Statistics and proof-based content</li>
-    </ul>
-
-    <h3>Top 20 Viral Topics Right Now (Updated):</h3>
+    <h3>Top Viral Topics Right Now:</h3>
     <ul>
       <li>💶 Make money with AI tools</li>
       <li>⚙️ ChatGPT tricks and hacks</li>
-      <li>🤖 New AI tools nobody knows about</li>
       <li>💪 Weight loss and fitness hacks</li>
-      <li>🧠 Brain hacks and psychology tips</li>
-      <li>🏠 Real estate investing for beginners</li>
-      <li>📱 Smartphone tips and tricks</li>
-      <li>🎬 Social media growth strategies</li>
-      <li>💎 Luxury lifestyle (aspirational)</li>
-      <li>🔐 Security and privacy tips</li>
-    </ul>
-
-    <h3>Content Calendar by Season:</h3>
-    <ul>
-      <li><strong>January:</strong> Motivation, fitness, goal-setting (highest search volume)</li>
-      <li><strong>April-June:</strong> Summer body, fashion, travel</li>
-      <li><strong>July-August:</strong> Vacation content, outdoor activities</li>
-      <li><strong>September:</strong> Back to school, productivity hacks</li>
-      <li><strong>Oct-Nov:</strong> Gift guides, reviews, preparation</li>
-      <li><strong>December:</strong> Year-end reviews, New Year prep</li>
-    </ul>
-
-    <h3>The Timing Secret (Critical!):</h3>
-    <ul>
-      <li>Trend starts on TikTok → 3-5 days</li>
-      <li>Moves to Instagram Reels → 5-7 days</li>
-      <li>Peaks on YouTube → 10-14 days</li>
-      <li>Smart move: Post on YouTube in WEEK 2</li>
-      <li>Why? Your video gets recommended to viewers already interested</li>
-    </ul>
-
-    <h3>Research Strategy (Video Idea Generator):</h3>
-    <ol>
-      <li>Search topic on Google Trends</li>
-      <li>Check YouTube for top 3 videos on that topic</li>
-      <li>Analyze: Views, upload date, comments, engagement</li>
-      <li>Look for: What worked, what's missing, what you can improve</li>
-      <li>Create: Your unique angle + better quality</li>
-      <li>Publish: When people are searching for it</li>
-    </ol>
-
-    <h3>Content Ideas That ALWAYS Convert:</h3>
-    <ul>
-      <li>"5 Secrets Nobody Talks About" (curiosity)</li>
-      <li>"This Changed My Life" (emotional/inspiring)</li>
-      <li>"I Tested This For 30 Days" (proof/experience)</li>
-      <li>"People Think X, But Y" (contrarian/education)</li>
-      <li>"Only 1% Know This" (exclusivity/FOMO)</li>
-    </ul>
-
-    <h3>Mistakes That Kill Viral Potential:</h3>
-    <ul>
-      <li>❌ Creating content about outdated trends (2 weeks too late)</li>
-      <li>❌ Picking niches with no audience</li>
-      <li>❌ Copying viral video exactly (YouTube penalizes)</li>
-      <li>❌ Long intros (people leave in first 3 seconds)</li>
-      <li>❌ No clear hook or value proposition</li>
+      <li>🧠 Personal development and habits</li>
     </ul>`
   }
 };
@@ -1602,34 +1219,15 @@ function openLearnModal(key) {
   }
 }
 
-function closeLearnModal() {
-  document.getElementById('learnModal').style.display = 'none';
-}
-
-function openPdfModal(){
-  initPdfButtons();
-  document.getElementById("pdfModal").style.display = "flex";
-}
-
-function closePdfModal(){
-  document.getElementById("pdfModal").style.display = "none";
-}
-
-function openCourseModal(){
-  document.getElementById("courseModal").style.display = "flex";
-}
-
-function closeCourseModal(){
-  document.getElementById("courseModal").style.display = "none";
-}
-
-function closeCoursePaymentModal(){
-  document.getElementById("coursePaymentModal").style.display = "none";
-}
-
-function openModal(){document.getElementById("workshopModal").style.display="flex";}
-function closeModal(){document.getElementById("workshopModal").style.display="none";}
-function closePaymentModal(){document.getElementById("paymentModal").style.display="none";}
+function closeLearnModal() { document.getElementById('learnModal').style.display = 'none'; }
+function openPdfModal(){ initPdfButtons(); document.getElementById("pdfModal").style.display = "flex"; }
+function closePdfModal(){ document.getElementById("pdfModal").style.display = "none"; }
+function openCourseModal(){ document.getElementById("courseModal").style.display = "flex"; }
+function closeCourseModal(){ document.getElementById("courseModal").style.display = "none"; }
+function closeCoursePaymentModal(){ document.getElementById("coursePaymentModal").style.display = "none"; }
+function openModal(){ document.getElementById("workshopModal").style.display="flex"; }
+function closeModal(){ document.getElementById("workshopModal").style.display="none"; }
+function closePaymentModal(){ document.getElementById("paymentModal").style.display="none"; }
 
 document.getElementById("workshopForm").addEventListener("submit",function(e){
   e.preventDefault();
