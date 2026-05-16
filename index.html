@@ -608,9 +608,21 @@ section h2{
   border:2px solid #8b0036;
 }
 
+.pricing-modal-content{
+  width:95%;
+  max-width:600px;
+  background:#000000;
+  padding:35px;
+  border-radius:20px;
+  box-shadow:0 0 30px rgba(139,0,54,0.4);
+  position:relative;
+  animation:popup 0.4s ease;
+  border:2px solid #8b0036;
+}
+
 @keyframes popup{from{opacity:0;transform:scale(0.8);}to{opacity:1;transform:scale(1);}}
 
-.modal-content h2,.pdf-modal-content h2,.detail-modal-content h2,.learn-modal-content h2{
+.modal-content h2,.pdf-modal-content h2,.detail-modal-content h2,.learn-modal-content h2,.pricing-modal-content h2{
   text-align:center;
   margin-bottom:25px;
   color:#c0003f;
@@ -658,6 +670,59 @@ section h2{
 }
 
 .submit-btn:hover{background:#a8004a;box-shadow:0 0 20px rgba(139,0,54,0.5);}
+
+/* PRICING PLAN */
+.pricing-plan{
+  background:rgba(139,0,54,0.15);
+  padding:30px;
+  border-radius:15px;
+  border:2px solid #8b0036;
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.pricing-plan h3{
+  color:#c0003f;
+  font-size:28px;
+  margin-bottom:15px;
+}
+
+.pricing-plan .price{
+  color:#ffffff;
+  font-size:48px;
+  font-weight:700;
+  margin:15px 0;
+}
+
+.pricing-plan .old-price{
+  color:#888;
+  font-size:24px;
+  text-decoration:line-through;
+  margin-bottom:20px;
+}
+
+.pricing-plan .currency{
+  font-size:24px;
+  vertical-align:super;
+}
+
+.pricing-plan .features{
+  text-align:left;
+  margin:25px 0;
+  line-height:2.2;
+  color:#e0e0e0;
+}
+
+.pricing-plan .features li{
+  margin-left:20px;
+  list-style:none;
+}
+
+.pricing-plan .features li:before{
+  content:"✅ ";
+  color:#c0003f;
+  margin-right:8px;
+}
 
 .payment-box{
   background:#111111;
@@ -717,6 +782,49 @@ section h2{
   font-weight:600;
 }
 
+.pricing-buttons{
+  display:flex;
+  gap:15px;
+  margin-top:25px;
+}
+
+.pricing-buttons button, .pricing-buttons a{
+  flex:1;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.enroll-lemon-btn{
+  background:#8b0036;
+  color:white;
+}
+
+.enroll-lemon-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 20px rgba(139,0,54,0.6);
+  background:#a8004a;
+}
+
+.contact-instructor-btn{
+  background:transparent;
+  color:#c0003f;
+  border:2px solid #8b0036;
+}
+
+.contact-instructor-btn:hover{
+  background:rgba(139,0,54,0.2);
+  box-shadow:0 0 20px rgba(139,0,54,0.4);
+}
+
 footer{
   background:#000000;
   text-align:center;
@@ -752,6 +860,10 @@ footer{
   .logo-item{
     font-size: 35px;
     opacity: 0.08;
+  }
+
+  .pricing-buttons{
+    flex-direction:column;
   }
 }
 </style>
@@ -854,7 +966,7 @@ footer{
             <li>✅ Viral Thumbnail Strategy</li>
           </ul>
         </div>
-        <button class="enroll-btn" onclick="openCourseModal()">Enroll Now</button>
+        <button class="enroll-btn" onclick="openPricingModal()">Enroll Now</button>
       </div>
     </div>
   </div>
@@ -969,17 +1081,35 @@ footer{
   </div>
 </div>
 
-<!-- COURSE REGISTRATION MODAL -->
-<div class="modal" id="courseModal">
-  <div class="modal-content">
-    <div class="close-btn" onclick="closeCourseModal()">×</div>
-    <h2>Course Enrollment</h2>
-    <form id="courseForm">
-      <div class="input-box"><input type="text" name="name" placeholder="Enter Your Name" required></div>
-      <div class="input-box"><input type="email" name="email" placeholder="Enter Your Gmail" required></div>
-      <div class="input-box"><input type="tel" name="phone" placeholder="Enter WhatsApp Number" required></div>
-      <button type="submit" class="submit-btn">Submit Information</button>
-    </form>
+<!-- PRICING MODAL (NEW) -->
+<div class="modal" id="pricingModal">
+  <div class="pricing-modal-content">
+    <div class="close-btn" onclick="closePricingModal()">×</div>
+    <h2>🎓 YouTube Automation Course</h2>
+    
+    <div class="pricing-plan">
+      <h3>Premium Training Package</h3>
+      <div class="old-price"><span class="currency">$</span>29.99</div>
+      <div class="price"><span class="currency">$</span>17.99</div>
+      <p style="color:#c0003f;font-weight:600;margin:15px 0;">Limited Time Offer - 40% OFF!</p>
+      
+      <ul class="features">
+        <li>4 Live Interactive Sessions</li>
+        <li>2 Weeks Complete Training</li>
+        <li>All AI Tools Covered</li>
+        <li>Script Writing Masterclass</li>
+        <li>Video Editing Guide</li>
+        <li>SEO & Viral Strategies</li>
+        <li>Lifetime Access to Materials</li>
+        <li>WhatsApp Support Group</li>
+        <li>Money Back Guarantee</li>
+      </ul>
+    </div>
+
+    <div class="pricing-buttons">
+      <a href="https://aiwithmusfirah.lemonsqueezy.com/checkout/buy/3a67cfb8-b849-47f0-a6ae-5c0e96af17d0" target="_blank" class="enroll-lemon-btn">💳 Enroll Now</a>
+      <button class="contact-instructor-btn" onclick="contactWhatsapp()">💬 Contact</button>
+    </div>
   </div>
 </div>
 
@@ -989,25 +1119,6 @@ footer{
     <div class="close-btn" onclick="closePaymentModal()">×</div>
     <h2>Complete Your Payment</h2>
     <p style="text-align:center;margin-bottom:20px;">Workshop Fee: <b>Rs.300</b></p>
-    <div class="payment-box">
-      <p><b>Bank Name:</b> MCB Bank Limited</p>
-      <p><b>Account Title:</b> Irtaza Tahir</p>
-      <p><b>Account Number:</b> 1643789581007865</p>
-      <p><b>IBAN:</b> PK04MUCB1643789581007865</p>
-    </div>
-    <p style="text-align:center;margin-bottom:25px;color:white;line-height:1.7;">After payment send screenshot on WhatsApp.</p>
-    <div style="text-align:center;">
-      <a href="https://wa.me/923014411354" target="_blank" class="btn workshop-btn">✅ Send Screenshot</a>
-    </div>
-  </div>
-</div>
-
-<!-- COURSE PAYMENT MODAL -->
-<div class="modal" id="coursePaymentModal">
-  <div class="modal-content">
-    <div class="close-btn" onclick="closeCoursePaymentModal()">×</div>
-    <h2>Complete Your Course Payment</h2>
-    <p style="text-align:center;margin-bottom:20px;">Premium Course Fee: <b>Rs.4,999</b></p>
     <div class="payment-box">
       <p><b>Bank Name:</b> MCB Bank Limited</p>
       <p><b>Account Title:</b> Irtaza Tahir</p>
@@ -1227,12 +1338,23 @@ function openLearnModal(key) {
 function closeLearnModal() { document.getElementById('learnModal').style.display = 'none'; }
 function openPdfModal(){ initPdfButtons(); document.getElementById("pdfModal").style.display = "flex"; }
 function closePdfModal(){ document.getElementById("pdfModal").style.display = "none"; }
-function openCourseModal(){ document.getElementById("courseModal").style.display = "flex"; }
-function closeCourseModal(){ document.getElementById("courseModal").style.display = "none"; }
-function closeCoursePaymentModal(){ document.getElementById("coursePaymentModal").style.display = "none"; }
 function openModal(){ document.getElementById("workshopModal").style.display="flex"; }
 function closeModal(){ document.getElementById("workshopModal").style.display="none"; }
 function closePaymentModal(){ document.getElementById("paymentModal").style.display="none"; }
+
+// ============ NEW FUNCTIONS FOR PRICING MODAL ============
+function openPricingModal(){
+  document.getElementById("pricingModal").style.display = "flex";
+}
+
+function closePricingModal(){
+  document.getElementById("pricingModal").style.display = "none";
+}
+
+function contactWhatsapp(){
+  // Open WhatsApp for direct contact
+  window.open("https://wa.me/923014411354?text=Hello%20Musfirah!%20I'm%20interested%20in%20enrolling%20in%20your%20YouTube%20Automation%20course.", '_blank');
+}
 
 document.getElementById("workshopForm").addEventListener("submit",function(e){
   e.preventDefault();
@@ -1243,30 +1365,20 @@ document.getElementById("workshopForm").addEventListener("submit",function(e){
   }).then(r=>r.json()).then(d=>{closeModal();document.getElementById("paymentModal").style.display="flex";});
 });
 
-document.getElementById("courseForm").addEventListener("submit",function(e){
-  e.preventDefault();
-  fetch("https://formsubmit.co/ajax/mianirtazatahir@gmail.com",{
-    method:"POST",
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({name:this.name.value,email:this.email.value,phone:this.phone.value})
-  }).then(r=>r.json()).then(d=>{closeCourseModal();document.getElementById("coursePaymentModal").style.display="flex";});
-});
-
 window.onclick=function(e){
   const pdf=document.getElementById("pdfModal");
   const detail=document.getElementById("detailModal");
   const learn=document.getElementById("learnModal");
   const w=document.getElementById("workshopModal");
   const pay=document.getElementById("paymentModal");
-  const course=document.getElementById("courseModal");
-  const coursePay=document.getElementById("coursePaymentModal");
+  const pricing=document.getElementById("pricingModal");
+  
   if(e.target==pdf)closePdfModal();
   if(e.target==detail)closeDetailModal();
   if(e.target==learn)closeLearnModal();
   if(e.target==w)w.style.display="none";
   if(e.target==pay)pay.style.display="none";
-  if(e.target==course)closeCourseModal();
-  if(e.target==coursePay)closeCoursePaymentModal();
+  if(e.target==pricing)closePricingModal();
 }
 </script>
 
