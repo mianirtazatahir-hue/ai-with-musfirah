@@ -670,6 +670,7 @@ section h2{
 }
 
 .submit-btn:hover{background:#a8004a;box-shadow:0 0 20px rgba(139,0,54,0.5);}
+.submit-btn:disabled{background:#555;cursor:not-allowed;opacity:0.7;}
 
 /* PRICING PLAN */
 .pricing-plan{
@@ -1081,7 +1082,7 @@ footer{
   </div>
 </div>
 
-<!-- PRICING MODAL (NEW) -->
+<!-- PRICING MODAL -->
 <div class="modal" id="pricingModal">
   <div class="pricing-modal-content">
     <div class="close-btn" onclick="closePricingModal()">×</div>
@@ -1342,7 +1343,7 @@ function openModal(){ document.getElementById("workshopModal").style.display="fl
 function closeModal(){ document.getElementById("workshopModal").style.display="none"; }
 function closePaymentModal(){ document.getElementById("paymentModal").style.display="none"; }
 
-// ============ NEW FUNCTIONS FOR PRICING MODAL ============
+// ============ PRICING MODAL FUNCTIONS ============
 function openPricingModal(){
   document.getElementById("pricingModal").style.display = "flex";
 }
@@ -1352,17 +1353,58 @@ function closePricingModal(){
 }
 
 function contactWhatsapp(){
-  // Open WhatsApp for direct contact
   window.open("https://wa.me/923014411354?text=Hello%20Musfirah!%20I'm%20interested%20in%20enrolling%20in%20your%20YouTube%20Automation%20course.", '_blank');
 }
 
-document.getElementById("workshopForm").addEventListener("submit",function(e){
+// ============ FIXED WORKSHOP FORM SUBMIT ============
+document.getElementById("workshopForm").addEventListener("submit", function(e){
   e.preventDefault();
-  fetch("https://formsubmit.co/ajax/mianirtazatahir@gmail.com",{
-    method:"POST",
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({name:this.name.value,email:this.email.value,phone:this.phone.value})
-  }).then(r=>r.json()).then(d=>{closeModal();document.getElementById("paymentModal").style.display="flex";});
+  
+  const form = this;
+  const submitBtn = form.querySelector(".submit-btn");
+  const originalText = submitBtn.textContent;
+  
+  // Button ko disable karo aur loading text dikhao
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Submitting... ⏳";
+  
+  const formData = {
+    name: form.name.value,
+    email: form.email.value,
+    phone: form.phone.value,
+    _subject: "New Workshop Registration!",
+    _template: "table",
+    _captcha: "false"
+  };
+
+  fetch("https://formsubmit.co/ajax/mianirtazatahir@gmail.com", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log("✅ Form submitted successfully:", data);
+    proceedToPayment();
+  })
+  .catch(error => {
+    console.error("⚠️ Form submission error:", error);
+    // Error aaye tab bhi user ko payment screen par bhejo
+    proceedToPayment();
+  })
+  .finally(() => {
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalText;
+  });
+
+  function proceedToPayment(){
+    form.reset();
+    closeModal();
+    document.getElementById("paymentModal").style.display = "flex";
+  }
 });
 
 window.onclick=function(e){
