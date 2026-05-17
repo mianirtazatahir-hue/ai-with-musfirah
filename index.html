@@ -932,7 +932,7 @@ footer{
   <p>Learn everything from AI video creation to passive income in just weeks.</p>
   <div class="buttons">
     <button class="btn" onclick="openPdfModal()">📥 Free Guide</button>
-    <button class="btn workshop-btn" onclick="openModal()">🎓 Workshop – Rs.300</button>
+    <button class="btn workshop-btn" onclick="openPaymentModal()">🎓 Workshop – Rs.300</button>
   </div>
   <div class="trust-section">
     <div class="trust-badge">🚀 Beginner Friendly<span>Step-by-step training for everyone.</span></div>
@@ -1065,20 +1065,6 @@ footer{
     <div style="text-align:center;margin-top:30px;">
       <button onclick="closeLearnModal()" class="btn workshop-btn">✖ Close</button>
     </div>
-  </div>
-</div>
-
-<!-- REGISTRATION MODAL -->
-<div class="modal" id="workshopModal">
-  <div class="modal-content">
-    <div class="close-btn" onclick="closeModal()">×</div>
-    <h2>Workshop Registration</h2>
-    <form id="workshopForm">
-      <div class="input-box"><input type="text" name="name" placeholder="Enter Your Name" required></div>
-      <div class="input-box"><input type="email" name="email" placeholder="Enter Your Gmail" required></div>
-      <div class="input-box"><input type="tel" name="phone" placeholder="Enter WhatsApp Number" required></div>
-      <button type="submit" class="submit-btn">Submit Information</button>
-    </form>
   </div>
 </div>
 
@@ -1339,8 +1325,7 @@ function openLearnModal(key) {
 function closeLearnModal() { document.getElementById('learnModal').style.display = 'none'; }
 function openPdfModal(){ initPdfButtons(); document.getElementById("pdfModal").style.display = "flex"; }
 function closePdfModal(){ document.getElementById("pdfModal").style.display = "none"; }
-function openModal(){ document.getElementById("workshopModal").style.display="flex"; }
-function closeModal(){ document.getElementById("workshopModal").style.display="none"; }
+function openPaymentModal(){ document.getElementById("paymentModal").style.display="flex"; }
 function closePaymentModal(){ document.getElementById("paymentModal").style.display="none"; }
 
 // ============ PRICING MODAL FUNCTIONS ============
@@ -1356,70 +1341,17 @@ function contactWhatsapp(){
   window.open("https://wa.me/923014411354?text=Hello%20Musfirah!%20I'm%20interested%20in%20enrolling%20in%20your%20YouTube%20Automation%20course.", '_blank');
 }
 
-// ============ FIXED WORKSHOP FORM SUBMIT ============
-document.getElementById("workshopForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  
-  const form = this;
-  const submitBtn = form.querySelector(".submit-btn");
-  const originalText = submitBtn.textContent;
-  
-  // Button ko disable karo aur loading text dikhao
-  submitBtn.disabled = true;
-  submitBtn.textContent = "Submitting... ⏳";
-  
-  const formData = {
-    name: form.name.value,
-    email: form.email.value,
-    phone: form.phone.value,
-    _subject: "New Workshop Registration!",
-    _template: "table",
-    _captcha: "false"
-  };
-
-  fetch("https://formsubmit.co/ajax/mianirtazatahir@gmail.com", {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify(formData)
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log("✅ Form submitted successfully:", data);
-    proceedToPayment();
-  })
-  .catch(error => {
-    console.error("⚠️ Form submission error:", error);
-    // Error aaye tab bhi user ko payment screen par bhejo
-    proceedToPayment();
-  })
-  .finally(() => {
-    submitBtn.disabled = false;
-    submitBtn.textContent = originalText;
-  });
-
-  function proceedToPayment(){
-    form.reset();
-    closeModal();
-    document.getElementById("paymentModal").style.display = "flex";
-  }
-});
-
 window.onclick=function(e){
   const pdf=document.getElementById("pdfModal");
   const detail=document.getElementById("detailModal");
   const learn=document.getElementById("learnModal");
-  const w=document.getElementById("workshopModal");
   const pay=document.getElementById("paymentModal");
   const pricing=document.getElementById("pricingModal");
   
   if(e.target==pdf)closePdfModal();
   if(e.target==detail)closeDetailModal();
   if(e.target==learn)closeLearnModal();
-  if(e.target==w)w.style.display="none";
-  if(e.target==pay)pay.style.display="none";
+  if(e.target==pay)closePaymentModal();
   if(e.target==pricing)closePricingModal();
 }
 </script>
